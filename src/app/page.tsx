@@ -1,7 +1,15 @@
-import Page from "@/app/style/discovery/page";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const Home = () => {
-  return <Page />;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/style/trend");
+  }, []);
+  return <div></div>;
 };
 
 export default Home;
