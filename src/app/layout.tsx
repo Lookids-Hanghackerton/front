@@ -15,7 +15,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
       <body>
         <div className={"flex flex-col w-full max-h-screen h-screen bg-gray-50"}>
           <div className={"flex flex-col flex-1 max-w-[767px] w-full m-auto shadow overflow-auto"}>
-            <div className={"flex-1 px-3 bg-white overflow-auto no-scroll "}>
+            <div className={"flex-1 bg-white overflow-auto no-scroll "}>
               <Header />
               {children}
             </div>
