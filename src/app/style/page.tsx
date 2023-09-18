@@ -1,7 +1,8 @@
 import React from "react";
+import Trend from "@/app/style/trend/page";
 
 const Page = () => {
-  return <div>discovery</div>;
+  return <Trend />;
 };
 
 export default Page;
