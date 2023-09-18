@@ -1,8 +1,8 @@
-import "./globals.css";
+import "../styles/input.css";
 import type { Metadata } from "next";
 import { ReactNode } from "react";
-import Navbar from "@/components/Navbar";
-import Header from "@/components/Header";
+import Header from "@/layout/Header";
+import Navbar from "@/layout/Navbar";
 
 export const metadata: Metadata = {
   title: "Lookids",

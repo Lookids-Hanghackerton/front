@@ -1,7 +1,5 @@
-import React from "react";
-
 const Page = () => {
-  return <div>fallowing</div>;
+  return <>Page</>;
 };
 
 export default Page;
