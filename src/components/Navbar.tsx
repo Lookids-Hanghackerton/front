@@ -2,10 +2,11 @@
 
 import React, { ReactNode } from "react";
 import Link from "next/link";
-import { BsChatHeart } from "react-icons/bs";
+import { BsHouseHeart } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { usePathname } from "next/navigation";
 import { LuSearch } from "react-icons/lu";
+import { AiOutlineMessage } from "react-icons/ai";
 
 interface NavItemProps {
   icon: ReactNode;
@@ -15,9 +16,9 @@ interface NavItemProps {
 
 const NAV_ITEMS: NavItemProps[] = [
   {
-    icon: <BsChatHeart size={"37px"} />,
-    text: "트렌드",
-    href: "/trend",
+    icon: <BsHouseHeart size={"37px"} />,
+    text: "스타일",
+    href: "/",
   },
   {
     icon: <LuSearch size={"37px"} />,
@@ -25,7 +26,7 @@ const NAV_ITEMS: NavItemProps[] = [
     href: "/search",
   },
   {
-    icon: <BsChatHeart size={"37px"} />,
+    icon: <AiOutlineMessage size={"37px"} />,
     text: "DM",
     href: "/dm",
   },
@@ -52,8 +53,6 @@ const Navbar = () => {
 export default Navbar;
 
 const NavItem = ({ icon, text, href, pathname }: { pathname: string } & NavItemProps) => {
-  console.log(pathname === href);
-
   return (
     <li>
       <Link className={"flex flex-col items-center gap-2.5 py-2.5 px-4 "} href={href}>

@@ -1,9 +1,7 @@
+import Page from "@/app/style/discovery/page";
+
 const Home = () => {
-  return (
-    <>
-      <main></main>
-    </>
-  );
+  return <Page />;
 };
 
 export default Home;
