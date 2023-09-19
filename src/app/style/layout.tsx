@@ -9,7 +9,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Tabs />
-      <div className={"px-3"}>{children}</div>
+      <div>{children}</div>
     </>
   );
 };
