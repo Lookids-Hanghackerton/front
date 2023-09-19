@@ -18,7 +18,7 @@ const NAV_ITEMS: NavItemProps[] = [
   {
     icon: <BsHouseHeart size={"37px"} />,
     text: "스타일",
-    href: "/",
+    href: "/style/trend",
   },
   {
     icon: <LuSearch size={"37px"} />,
