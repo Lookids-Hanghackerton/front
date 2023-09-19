@@ -1,5 +1,4 @@
 @import "src/assets/fonts/font.css";
-@import "src/assets/css/reset.css";
 
 @tailwind base;
 @tailwind components;
@@ -16,4 +15,8 @@
 .no-scroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
 }
