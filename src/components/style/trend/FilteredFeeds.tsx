@@ -13,7 +13,7 @@ const FilteredFeeds = () => {
     setFiltered(target);
   };
   return (
-    <div className={""}>
+    <div>
       <Filters filtered={filtered} onClick={filterHandler} />
       <Feeds />
     </div>
