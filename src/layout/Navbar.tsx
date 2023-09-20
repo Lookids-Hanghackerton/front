@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import Link from "next/link";
 import { BsHouseHeart } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
