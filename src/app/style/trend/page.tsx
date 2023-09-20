@@ -1,13 +1,11 @@
-import Feeds from "@/components/style/Feeds";
 import Tags from "@/components/style/Tags";
+import FilteredFeeds from "@components/style/trend/FilteredFeeds";
 
 const Page = () => {
   return (
     <div>
       <Tags />
-      <div className={"px-12"}>
-        <Feeds />
-      </div>
+      <FilteredFeeds />
     </div>
   );
 };
