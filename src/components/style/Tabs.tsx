@@ -34,7 +34,7 @@ const Tab = ({ text, href }: TabProps) => {
   const pathname = usePathname();
 
   return (
-    <Link className={"flex justify-center items-center flex-1 text-xl"} href={href}>
+    <Link className={"flex justify-center items-center flex-1 text-l"} href={href}>
       <li>
         <div className={"relative flex pb-4"}>
           <span className={pathname === href ? "font-semibold" : ""}>{text}</span>

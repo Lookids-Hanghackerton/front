@@ -21,7 +21,6 @@ const Tags = () => {
 
   const onDragMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isDrag) {
-      console.log(e);
       scrollRef.current.scrollLeft = startX - e.pageX;
     }
   };
@@ -66,10 +65,10 @@ export default Tags;
 const Tag = () => {
   return (
     <li className={"flex-1 flex flex-col justify-center items-center gap-2.5 cursor-pointer"}>
-      <div className={"w-28 h-28 rounded-full bg-black overflow-hidden"}>
+      <div className={"w-20 h-20 rounded-full bg-black overflow-hidden"}>
         <Image width={112} height={112} src={"https://source.unsplash.com/random"} alt={"image"} />
       </div>
-      <div className={"w-28 text-center break-all text-gray-700"}>#웰컴어텀챌린지</div>
+      <div className={"w-20 text-center break-all text-gray-700 text-sm"}>#웰컴어텀챌린지</div>
     </li>
   );
 };
