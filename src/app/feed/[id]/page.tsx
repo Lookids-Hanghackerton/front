@@ -1,3 +1,5 @@
+import ImageCarousel from "@components/feed/ImageCarousel";
+
 interface PageParams {
   id: string;
 }
@@ -5,7 +7,11 @@ interface PageParams {
 const Page = ({ params }: { params: PageParams }) => {
   const id = params.id;
 
-  return <div>{id}</div>;
+  return (
+    <div>
+      <ImageCarousel />
+    </div>
+  );
 };
 
 export default Page;
