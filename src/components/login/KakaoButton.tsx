@@ -10,6 +10,7 @@ const KakaoButton = () => {
     callbackUrl: `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`,
     imageUrl: "/images/buttons/login/kakao_login_large_narrow.png",
     alt: "카카오 로그인",
+    color: "#fee600",
   };
 
   return <SocialLoginButton {...KAKAO_CONFIG} />;

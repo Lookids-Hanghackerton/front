@@ -5,18 +5,19 @@ import { useSearchParams } from "next/navigation";
 const Page = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+  const state = searchParams.get("state");
+  if (!code || !state) return console.log("uri에 code 또는 state가 없습니다.");
+
   const apiUrl = process.env.NEXT_PUBLIC_ENPOINT;
+  const url = `${apiUrl}/callback/naver?code=${code}&state=${state}`;
 
   useEffect(() => {
-    // POST 요청: /naver/callback
-    if (!code) return console.log("code가 없습니다.");
-
-    fetch(apiUrl + "/callback/naver", {
+    // POST 요청: callback/naver/
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // 요청 헤더에 JSON 데이터를 보내는 것으로 가정합니다.
       },
-      body: JSON.stringify({ code }), // code 값을 JSON 형식으로 전송
     })
       .then(response => {
         if (!response.ok) {

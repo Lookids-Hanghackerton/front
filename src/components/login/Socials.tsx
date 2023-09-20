@@ -3,7 +3,7 @@ import KakaoButton from "./KakaoButton";
 
 const Socials = () => {
   return (
-    <div className="w-full flex flex-col gap-4 mb-[20%]">
+    <div className="w-full flex flex-col gap-4 mb-[20%] px-10">
       <div className="h-16">
         <NaverButton />
       </div>

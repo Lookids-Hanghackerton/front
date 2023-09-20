@@ -11,6 +11,7 @@ const NaverButton = () => {
     callbackUrl: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${clientId}&state=${state}&redirect_uri=${redirectUri}`,
     imageUrl: "/images/buttons/naver_btnG_complete.png",
     alt: "네이버 로그인",
+    color: "#01c75a",
   };
 
   return <SocialLoginButton {...NAVER_CONFIG} />;
