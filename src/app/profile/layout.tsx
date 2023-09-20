@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       {/* <DefaultHeader /> */}
-      <ArrowHeader right={<Right isText={false}/>} center={<Center isText={true} text={"dddd"}/>}/>
+      <ArrowHeader right={<Right isText={false}/>} center={<Center isText={true} text={"UserName"}/>}/>
       <div>{children}</div>
     </>
   );
