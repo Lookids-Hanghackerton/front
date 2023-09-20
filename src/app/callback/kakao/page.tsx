@@ -29,7 +29,7 @@ const Page = () => {
   }, []);
   return (
     <div className="h-screen flex-center bg-n-400">
-      <h2 className="text-2xl animate-pulse text-primary ">네이버 콜백 페이지</h2>
+      <h2 className="text-2xl animate-pulse text-primary ">카카오 콜백 페이지</h2>
     </div>
   );
 };

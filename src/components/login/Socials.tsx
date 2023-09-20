@@ -3,9 +3,13 @@ import KakaoButton from "./KakaoButton";
 
 const Socials = () => {
   return (
-    <div className="flex h-16">
-      <NaverButton />
-      <KakaoButton />
+    <div className="w-full flex flex-col gap-4 mb-[20%]">
+      <div className="h-16">
+        <NaverButton />
+      </div>
+      <div className="h-16">
+        <KakaoButton />
+      </div>
     </div>
   );
 };
