@@ -12,7 +12,7 @@ interface SocialLoginButton {
 const SocialLoginButton = ({ id, callbackUrl, imageUrl, alt, color }: SocialLoginButton) => {
   return (
     <div id={id} className="relative w-full h-full rounded-lg" style={{ backgroundColor: color }}>
-      <Link href={callbackUrl} target="_blank" rel="noopener noreferrer">
+      <Link href={callbackUrl} rel="noopener noreferrer">
         <Image src={imageUrl} alt={alt} layout="fill" objectFit="contain" />
       </Link>
     </div>
