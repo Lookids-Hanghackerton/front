@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { postSocialCode } from "@/hooks/login/useSocialLogin";
+import { postSocialCode } from "@/apis/controllers/useSocialLogin";
 
 import LinkToLogin from "../common/LinkToLogin";
 
