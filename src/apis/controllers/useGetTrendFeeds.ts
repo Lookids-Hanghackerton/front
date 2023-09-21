@@ -1,7 +1,7 @@
 import { api } from "@utils/axios/api";
 import { useQuery } from "@tanstack/react-query";
 import { FilterItem } from "@components/style/trend/FilteredFeeds";
-import { FeedResponse } from "@/apis/interface/FeedListInterface";
+import { FeedResponse } from "@/apis/interfaces/Feeds";
 
 export const getTrendFeeds = async (filtered: FilterItem) => {
   const sort = filtered === "최신순" ? "latest" : filtered === "인기순" ? "popular" : undefined;

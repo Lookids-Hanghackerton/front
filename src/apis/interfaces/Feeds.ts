@@ -29,3 +29,18 @@ export interface FeedResponse {
     feedsList: Feed[];
   };
 }
+
+export interface FeedDetail {
+  status: number;
+  msg: string;
+  data: {
+    feedsId: number;
+    content: string;
+    likeCount: number;
+    replyCount: number;
+    member: Member;
+    pictures: string[];
+    hashTag: string[];
+    products: number[];
+  };
+}
