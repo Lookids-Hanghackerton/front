@@ -3,15 +3,16 @@
 import React from "react";
 import Image from "next/image";
 import useHorizontalDrag from "@hooks/useHorizontalDrag";
+import { FeedDetailData } from "@/apis/interfaces/Feeds";
 
-const ItemTags = () => {
+const ItemTags = ({ pictures }: Pick<FeedDetailData, "pictures">) => {
   const TagList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const { scrollRef, onDragStart, onDragMove, onDragEnd } = useHorizontalDrag();
 
   return (
     <div
-      className={"pb-3 pt-10 overflow-auto no-scroll border-b border-gray-500 mx-3"}
+      className={`pb-3 overflow-auto no-scroll border-b border-gray-500 mx-3 ${pictures.length > 1 ? "pt-10" : "pt-3"}`}
       ref={scrollRef}
       onMouseDown={onDragStart}
       onMouseMove={onDragMove}

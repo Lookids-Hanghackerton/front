@@ -5,7 +5,7 @@ import { FeedDetailData } from "@/apis/interfaces/Feeds";
 
 const Owner = ({ member }: Pick<FeedDetailData, "member">) => {
   return (
-    <div className={"flex-1 flex justify-between items-center px-6 pb-3"}>
+    <div className={"flex-1 flex justify-between items-center px-3 pb-3"}>
       <div className={"flex items-center gap-2.5  cursor-pointer"}>
         <div className={"relative w-8 h-8 rounded-full bg-black overflow-hidden"}>
           <Image fill={true} src={member.profileImage} alt={"avatar"} />
