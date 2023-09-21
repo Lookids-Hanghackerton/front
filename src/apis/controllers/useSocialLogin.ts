@@ -1,5 +1,5 @@
 import { api } from "@utils/axios/api";
-import { PostSocialCode } from "../interface/SocialLogin";
+import { PostSocialCode } from "../interfaces/SocialLogin";
 
 /** 소셜 로그인
  * @param {PostSocialCode} params
