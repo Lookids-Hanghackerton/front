@@ -2,8 +2,8 @@
 
 import Filters from "@components/style/trend/Filters";
 import { useState } from "react";
-import { useGetTrendFeeds } from "@hooks/style/trend/useGetTrendFeeds";
-import { FeedResponse } from "@/apis/interface/FeedListInterface";
+import { useGetTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
+import { FeedResponse } from "@/apis/interfaces/Feeds";
 import Feeds from "@components/style/trend/Feeds";
 
 export type FilterItem = (typeof FILTER_ITEMS)[number];
