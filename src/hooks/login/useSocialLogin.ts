@@ -20,7 +20,12 @@ export const postSocialCode = async ({ type, code, state, search }: postSocialCo
   if (search) url += `?${search}`;
 
   try {
-    api.post(url, { code, state: state || "" });
+    const { data } = await api.post(url, { code, state: state || "" });
+
+    // <data의 isExtraInfo 확인>
+    // navigate
+    // - false 시, mypage/extra-info/{email-id}
+    // - ture 시, style/trend
 
     return {
       success: true,
