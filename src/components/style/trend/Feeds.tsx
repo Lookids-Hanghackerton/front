@@ -19,7 +19,7 @@ const Feeds = () => {
 
 export default Feeds;
 
-const Feed = ({ index }: { index: number }) => {
+export const Feed = ({ index }: { index: number }) => {
   return (
     <Link href={`/feed/${index}`} className={"w-full cursor-pointer"}>
       <Image
