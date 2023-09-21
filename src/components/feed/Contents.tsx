@@ -1,16 +1,17 @@
-const Contents = () => {
+import { FeedDetailData } from "@/apis/interfaces/Feeds";
+
+const Contents = ({ content, hashTag: hashTags }: Pick<FeedDetailData, "content" | "hashTag">) => {
   return (
-    <p className={"text-sm pb-8"}>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam commodi consectetur cumque dolorum ea
-      exercitationem fuga harum inventore ipsa minima molestias, necessitatibus, odio officiis possimus quia, rem
-      similique voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam commodi consectetur
-      cumque dolorum ea exercitationem fuga harum inventore ipsa minima molestias, necessitatibus, odio officiis
-      possimus quia, rem similique voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam
-      commodi consectetur cumque dolorum ea exercitationem fuga harum inventore ipsa minima molestias, necessitatibus,
-      odio officiis possimus quia, rem similique voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-      aperiam commodi consectetur cumque dolorum ea exercitationem fuga harum inventore ipsa minima molestias,
-      necessitatibus, odio officiis possimus quia, rem similique voluptas.
-    </p>
+    <>
+      <p className={"text-sm pb-2"}>{content}</p>
+      <div className={"pb-8"}>
+        {hashTags.map((hashTag, idx) => (
+          <span key={idx} className={"mr-2 text-sm cursor-pointer  text-blue-700"}>
+            {hashTag}
+          </span>
+        ))}
+      </div>
+    </>
   );
 };
 

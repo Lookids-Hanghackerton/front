@@ -12,7 +12,7 @@ export interface Member {
   authority: string;
 }
 
-export interface Feed {
+export interface FeedData {
   feedsId: number;
   content: string;
   likeCount: number;
@@ -26,6 +26,23 @@ export interface FeedResponse {
   status: number;
   msg: string;
   data: {
-    feedsList: Feed[];
+    feedsList: FeedData[];
   };
+}
+
+export interface FeedDetail {
+  status: number;
+  msg: string;
+  data: FeedDetailData;
+}
+
+export interface FeedDetailData {
+  feedsId: number;
+  content: string;
+  likeCount: number;
+  replyCount: number;
+  member: Member;
+  pictures: string[];
+  hashTag: string[];
+  products: number[];
 }

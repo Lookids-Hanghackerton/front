@@ -2,11 +2,10 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { AiOutlineHeart } from "react-icons/ai";
 import Image from "next/image";
 import Link from "next/link";
-import { Feed } from "@/apis/interface/FeedListInterface";
+import { FeedData } from "@/apis/interfaces/Feeds";
 import Measure from "react-measure";
 
-const Feeds = ({ feeds }: { feeds: Feed[] }) => {
-  console.log(feeds);
+const Feeds = ({ feeds }: { feeds: FeedData[] }) => {
   return (
     <ResponsiveMasonry columnsCountBreakPoints={{ 200: 2, 600: 3 }} className={"px-5"}>
       <Masonry gutter={"10px"}>
@@ -34,7 +33,7 @@ const Feeds = ({ feeds }: { feeds: Feed[] }) => {
 
 export default Feeds;
 
-export const FeedDetail = ({ feedsId, content, likeCount, replyCount, pictures, hashTag, member }: Feed) => {
+export const FeedDetail = ({ feedsId, content, likeCount, pictures, member }: FeedData) => {
   return (
     <Link href={`/feed/${feedsId}`} className={"w-full cursor-pointer"}>
       <div className={"relative"}>
@@ -57,13 +56,7 @@ export const FeedDetail = ({ feedsId, content, likeCount, replyCount, pictures, 
         <div className={"flex items-center justify-between"}>
           <div className={"flex items-center"}>
             <div className={"relative w-6 h-6 mr-2"}>
-              <Image
-                src={"/" + member.profileImage}
-                alt={"avatar"}
-                className={"rounded-full"}
-                fill={true}
-                sizes={"full"}
-              />
+              <Image src={member.profileImage} alt={"avatar"} className={"rounded-full"} fill={true} sizes={"full"} />
             </div>
             <div className={"text-xs truncate"}>{member.memberNickName}</div>
           </div>
