@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       <DefaultHeader />
       <Tabs />
-      <div>{children}</div>
+      <>{children}</>
     </>
   );
 };
