@@ -1,46 +1,13 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
+import useHorizontalDrag from "@hooks/useHorizontalDrag";
 
 const Tags = () => {
   const TagList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-  const scrollRef = useRef<any>(null);
-
-  const [isDrag, setIsDrag] = useState(false);
-  const [startX, setStartX] = useState<number>(0);
-  const onDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDrag(true);
-    setStartX(e.pageX + scrollRef.current.scrollLeft);
-  };
-
-  const onDragEnd = () => {
-    setIsDrag(false);
-  };
-
-  const onDragMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isDrag) {
-      scrollRef.current.scrollLeft = startX - e.pageX;
-    }
-  };
-
-  /**
-   * onDragMove의 이벤트가 많이 일어나서 throttling이 필요하다면 활성화 해야할듯?
-   */
-  // const throttle = (func: (e: React.MouseEvent<HTMLDivElement>) => void, ms: number) => {
-  //   let throttled = false;
-  //   return (e: React.MouseEvent<HTMLDivElement>) => {
-  //     if (!throttled) {
-  //       throttled = true;
-  //       setTimeout(() => {
-  //         func(e);
-  //         throttled = false;
-  //       }, ms);
-  //     }
-  //   };
-  // };
-  // const onThrottleDragMove = throttle(onDragMove, 100);
+  
+  const { scrollRef, onDragStart, onDragMove, onDragEnd } = useHorizontalDrag();
 
   return (
     <div
