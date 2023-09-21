@@ -1,11 +1,13 @@
 import Tags from "@/components/style/Tags";
 import FilteredFeeds from "@components/style/trend/FilteredFeeds";
+import { getTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
 
-const Page = () => {
+const Page = async () => {
+  const feedList = await getTrendFeeds("인기순");
   return (
     <div>
       <Tags />
-      <FilteredFeeds />
+      <FilteredFeeds feedList={feedList} />
     </div>
   );
 };

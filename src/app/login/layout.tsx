@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import Tabs from "@/components/style/Tabs";
 import DefaultHeader from "@layout/header/DefaultHeader";
+import ArrowHeader from "@/layout/header/ArrowHeader";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,9 +9,9 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <DefaultHeader />
-      <Tabs />
-      <>{children}</>
+      <ArrowHeader />
+
+      <div className="flex-1 flex-col flex-center">{children}</div>
     </>
   );
 };

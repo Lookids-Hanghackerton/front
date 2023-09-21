@@ -1,11 +1,18 @@
+"use client";
+
+import { getFeed } from "@/apis/controllers/useGetFeed";
+import Feed from "@components/feed/Feed";
+
 interface PageParams {
-  id: string;
+  id: number;
 }
 
-const Page = ({ params }: { params: PageParams }) => {
+const Page = async ({ params }: { params: PageParams }) => {
   const id = params.id;
 
-  return <div>{id}</div>;
+  const feed = await getFeed(id);
+
+  return <Feed feed={feed} id={id} />;
 };
 
 export default Page;
