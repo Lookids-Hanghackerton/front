@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useGetTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
 import { FeedResponse } from "@/apis/interfaces/Feeds";
 import Feeds from "@components/style/trend/Feeds";
+import { useGetFeed } from "@/apis/controllers/useGetFeed";
 
 export type FilterItem = (typeof FILTER_ITEMS)[number];
 
@@ -20,7 +21,7 @@ const FilteredFeeds = ({ feedList }: { feedList: FeedResponse }) => {
   return (
     <div>
       <Filters filtered={filtered} onClick={filterHandler} />
-      {/* <Feeds feeds={data.data.feedsList} /> */}
+      <Feeds feeds={data.data.feedsList} />
     </div>
   );
 };

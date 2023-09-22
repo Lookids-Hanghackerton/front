@@ -1,12 +1,12 @@
 import FeedsTabs from "@/components/mypage/FeedsTabs";
 import ProfileFeeds from "@/components/mypage/ProfileFeeds";
 import ProfileTabs from "@/components/mypage/ProfileTabs";
-import { getTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
 import DefaultImage from "/public/blank.png";
 import Image from "next/image";
 import ProfileButton from "@/components/mypage/ProfileButton";
 import FollowCounter from "@/components/mypage/FollowCounter";
 import ProfileHeader from "@/components/mypage/ProfileHeader";
+import { getTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
 
 const Page = async () => {
   const feedList = await getTrendFeeds("인기순");
@@ -31,7 +31,7 @@ const Page = async () => {
       </div>
       <ProfileButton />
       <FeedsTabs />
-      <ProfileFeeds feedList={feedList} />
+      {/* <ProfileFeeds feedList={feedList} /> */}
     </>
   );
 };
