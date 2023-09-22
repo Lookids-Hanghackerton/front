@@ -21,7 +21,7 @@ const Feed = ({ feed, id }: FeedProps) => {
     <div>
       <Owner member={member} />
       <ImageCarousel pictures={pictures} />
-      <ItemTags />
+      <ItemTags pictures={pictures} />
       <div className={"px-3"}>
         <Functions />
         <Counts likeCount={likeCount} replyCount={replyCount} />
