@@ -1,29 +1,18 @@
-import ImageCarousel from "@components/feed/ImageCarousel";
-import ItemTags from "@components/feed/ItemTags";
-import Functions from "@components/feed/Functions";
-import Counts from "@components/feed/Counts";
-import Contents from "@components/feed/Contents";
-import Owner from "@components/feed/Owner";
+"use client";
+
+import { getFeed } from "@/apis/controllers/useGetFeed";
+import Feed from "@components/feed/Feed";
 
 interface PageParams {
-  id: string;
+  id: number;
 }
 
-const Page = ({ params }: { params: PageParams }) => {
+const Page = async ({ params }: { params: PageParams }) => {
   const id = params.id;
 
-  return (
-    <div>
-      <Owner />
-      <ImageCarousel />
-      <ItemTags />
-      <div className={"px-3"}>
-        <Functions />
-        <Counts />
-        <Contents />
-      </div>
-    </div>
-  );
+  const feed = await getFeed(id);
+
+  return <Feed feed={feed} id={id} />;
 };
 
 export default Page;

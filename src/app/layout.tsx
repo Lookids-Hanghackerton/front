@@ -16,7 +16,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         <ReactQueryProvider>
           <div className={"flex flex-col w-full max-h-screen h-screen bg-gray-50"}>
             <div className={"flex flex-col flex-1 max-w-[767px] w-full m-auto shadow overflow-auto"}>
-              <div className={"flex-1 bg-white overflow-auto no-scroll "}>{children}</div>
+              <div className={"flex flex-col flex-1 bg-white overflow-auto no-scroll "}>{children}</div>
               <Navbar />
             </div>
           </div>

@@ -8,11 +8,10 @@ interface RightProps {
 
 /**
  *
-
-@param isText false => 햄버거 버튼 // true => text prop 필요
-@param text
-@param onClick
-*/
+ * @param isText false => 햄버거 버튼 // true => text prop 필요
+ * @param text
+ * @param onClick
+ */
 
 const Right = ({ isText, text, onClick }: RightProps) => {
   return (

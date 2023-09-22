@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { BsBookmark, BsChat } from "react-icons/bs";
+import { BsChat } from "react-icons/bs";
+import { PiShareFatLight } from "react-icons/pi";
 
 const Functions = () => {
   return (
@@ -10,7 +11,7 @@ const Functions = () => {
         <BsChat className={"cursor-pointer"} size={"28px"} />
       </div>
       <div>
-        <BsBookmark className={"cursor-pointer"} size={"28px"} />
+        <PiShareFatLight className={"cursor-pointer"} size={"28px"} onClick={() => alert("준비중인 기능입니다")} />
       </div>
     </div>
   );
