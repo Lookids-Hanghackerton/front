@@ -9,8 +9,8 @@ interface TabProps {
 }
 
 const TabItems = [
-  { text: "팔로워", href: "/mypage/follower" },
-  { text: "팔로잉", href: "/mypage/following" },
+  { text: "팔로워", href: "/follower" },
+  { text: "팔로잉", href: "/following" },
 ];
 const FollowTabs = () => {
   return (
