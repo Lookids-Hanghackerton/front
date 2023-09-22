@@ -1,12 +1,13 @@
 "use client";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { postSocialCode } from "@/apis/controllers/useSocialLogin";
 
 import LinkToLogin from "../common/LinkToLogin";
+import UseLogin from "@/hooks/useSocialLogin";
 
 const Page = () => {
   const searchParams = useSearchParams();
+  const useLogin = UseLogin();
 
   useEffect(() => {
     const code = searchParams.get("code");
@@ -15,7 +16,7 @@ const Page = () => {
 
     const params = `code=${code}&state=${state}`;
 
-    postSocialCode({ type: "naver", search: params, code, state });
+    useLogin.login({ type: "naver", search: params, code });
   }, []);
 
   return (
