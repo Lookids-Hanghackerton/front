@@ -1,3 +1,5 @@
+"use client";
+
 import Owner from "@components/feed/Owner";
 import Functions from "@components/feed/Functions";
 import Counts from "@components/feed/Counts";

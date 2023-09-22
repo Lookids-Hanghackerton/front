@@ -31,7 +31,7 @@ export default Tags;
 
 const Tag = () => {
   return (
-    <li className={"flex-1 flex flex-col justify-center items-center gap-2.5 cursor-pointer"}>
+    <li className={"flex-1 flex flex-col justify-start items-center gap-2.5 cursor-pointer"}>
       <div className={"relative w-16 h-16 rounded-full bg-black overflow-hidden"}>
         <Image fill={true} src={"https://source.unsplash.com/random"} alt={"image"} />
       </div>
