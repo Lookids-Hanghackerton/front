@@ -10,7 +10,11 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <ArrowHeader right={<Right isText={false}/>} center={<Center isText={true} text={"UserName"}/>}/>
+      <ArrowHeader 
+        right={<Right isText={false}/>} 
+        center={<Center isText={true} 
+        text={"UserName"}/>}
+      />
       <div>{children}</div>
     </>
   );
