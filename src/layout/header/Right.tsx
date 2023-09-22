@@ -17,7 +17,7 @@ const Right = ({ isText, text, onClick }: RightProps) => {
   return (
     <div className={"pl-6"}>
       {isText ? (
-        <p className={"font-semibold"} onClick={onClick}>
+        <p className={"font-semibold cursor-pointer"} onClick={onClick}>
           {text}
         </p>
       ) : (
