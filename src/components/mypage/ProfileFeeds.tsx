@@ -21,7 +21,6 @@ const ProfileFeeds = ({ feedsList, memberUniqueId }: { feedsList?: FeedResponse;
     <div>
       <ProfileFilters filtered={filtered} onClick={filterHandler} />
       {data && <MyFeeds feeds={data.data.feedsList} />}
-      {/*<MyFeeds feeds={data.data.feedsList} />*/}
     </div>
   );
 };

@@ -7,6 +7,7 @@ const MyFeeds = ({ feeds }: { feeds: FeedData[] }) => {
     <div className={"grid grid-cols-3 gap-2 px-3 pb-3"}>
       {feeds.map(({ feedsId, content, likeCount, replyCount, pictures, hashTag }) => (
         <MyFeedDetail
+          key={feedsId}
           feedsId={feedsId}
           content={content}
           likeCount={likeCount}
