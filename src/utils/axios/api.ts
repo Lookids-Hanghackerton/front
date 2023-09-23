@@ -1,10 +1,23 @@
 import { COOKIE_NAME, getCookie, setCookie } from "@/lib/cookie/cookie";
 import { UserAtom } from "@/states/atom/user.atom";
 import axios, { CreateAxiosDefaults } from "axios";
+import { redirect } from "next/dist/server/api-utils";
+
+const accessKey = 'Bearer YOUR_ACCESS_KEY';
 
 const config: CreateAxiosDefaults = {
   baseURL: process.env.NEXT_PUBLIC_ENDPOINT,
+  headers: {
+    'Authorization': `${accessKey}`,
+  },
 };
+
+export const checkAccessKey = (req,res) => {
+  if (!accessKey || accessKey !== accessKey) {
+    return res.redirect('/rogin');
+  }
+}
+
 
 export const api = axios.create(config);
 

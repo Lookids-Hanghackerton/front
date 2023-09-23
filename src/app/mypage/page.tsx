@@ -14,7 +14,7 @@ const Page = async () => {
   
   const cookie = cookieStore.getAll().map(cookie => JSON.parse(cookie.value))[0] as Cookie;
   
-  const feedsList = await getMyFeeds("최신순", cookie.memberUniqueId);
+  // const feedsList = await getMyFeeds("최신순", cookie.memberUniqueId);
   return (
     <>
       <ProfileHeader text={cookie.memberNickName} />
@@ -28,7 +28,7 @@ const Page = async () => {
       </div>
       <ProfileButton />
       <FeedsTabs />
-      <ProfileFeeds feedsList={feedsList} memberUniqueId={cookie.memberUniqueId}/>
+      {/* <ProfileFeeds feedsList={feedsList} memberUniqueId={cookie.memberUniqueId}/> */}
     </>
   );
 };
