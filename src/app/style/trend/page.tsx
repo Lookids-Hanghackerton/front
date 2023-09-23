@@ -9,7 +9,7 @@ const Page = async () => {
 
   return (
     <div>
-      <Tags tagList={tagList} />
+      <Tags tagList={tagList} feedList={feedList} />
       <FilteredFeeds feedList={feedList} />
     </div>
   );

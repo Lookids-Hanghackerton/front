@@ -5,7 +5,7 @@ import Image from "next/image";
 import useHorizontalDrag from "@hooks/useHorizontalDrag";
 import { useGetTrendTags } from "@/apis/controllers/style/useTrendTags";
 
-const Tags = ({ tagList }: { tagList: any }) => {
+const Tags = ({ tagList, feedList }: { tagList: any; feedList: any }) => {
   const { scrollRef, onDragStart, onDragMove, onDragEnd } = useHorizontalDrag();
 
   const { data } = useGetTrendTags({ tagList });
@@ -21,7 +21,7 @@ const Tags = ({ tagList }: { tagList: any }) => {
     >
       <ul className={"inline-flex px-3 gap-7"}>
         {tags.map((tag: string, idx: number) => (
-          <Tag key={idx} tag={tag} />
+          <Tag key={idx} tag={tag} images={feedList.data.feedsList[idx].pictures[0]} />
         ))}
       </ul>
     </div>
@@ -30,11 +30,11 @@ const Tags = ({ tagList }: { tagList: any }) => {
 
 export default Tags;
 
-const Tag = ({ tag }: { tag: string }) => {
+const Tag = ({ tag, images }: { tag: string; images: string }) => {
   return (
     <li className={"flex-1 flex flex-col justify-start items-center gap-2.5 cursor-pointer"}>
       <div className={"relative w-16 h-16 rounded-full bg-black overflow-hidden"}>
-        <Image fill={true} src={"https://source.unsplash.com/random"} alt={"image"} />
+        <Image fill={true} src={images} alt={"image"} />
       </div>
       <div className={"w-16 text-center break-all text-gray-700 text-sm"}>#{tag}</div>
     </li>
