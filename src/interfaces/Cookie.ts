@@ -1,4 +1,4 @@
-interface Cookie {
+export interface Cookie {
   memberId: number;
   memberUniqueId: string;
   memberNickName: string;

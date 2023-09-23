@@ -1,15 +1,16 @@
-import FollowTabs from "@/components/mypage/FollowTabs";
-import { COOKIE_NAME, getCookie } from "@/lib/cookie/cookie";
+import Follow from "@components/follow/Follow";
+import { getUserFollowList } from "@/apis/controllers/useUserFollowList";
 
-const Page = () => {
-  const cookie = getCookie(COOKIE_NAME);
+const Page = async ({
+  searchParams,
+}: {
+  searchParams: { tab: "following" | "follower"; memberNickName: string; memberUniqueId: string };
+}) => {
+  const initialData = await getUserFollowList({ type: searchParams.tab, id: searchParams.memberUniqueId });
 
-  console.log(cookie);
   return (
     <>
-      {/* <ProfileHeader text={"UserName"}/> */}
-      <FollowTabs />
-      <div>팔로워 디테일 보는 곳</div>
+      <Follow initialData={initialData} />
     </>
   );
 };

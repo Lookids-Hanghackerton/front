@@ -6,13 +6,15 @@ import Link from "next/link";
 interface TabProps {
   text: string;
   href: string;
+  cursor: string;
 }
 
 const TabItems = [
-  { text: "트렌드", href: "/style/trend" },
-  { text: "랭킹", href: "/style/ranking" },
+  { text: "트렌드", cursor: "pointer", href: "/style/trend" },
+  { text: "랭킹", cursor: "pointer", href: "/style/ranking" },
   {
     text: "팔로우",
+    cursor: "auto",
     href: "/style/following",
   },
 ];
@@ -20,8 +22,8 @@ const Tabs = () => {
   return (
     <nav>
       <ul className={"flex border-b border-solid border-gray-100"}>
-        {TabItems.map(({ text, href }) => (
-          <Tab key={text} text={text} href={href} />
+        {TabItems.map(({ text, href, cursor }) => (
+          <Tab key={text} text={text} href={href} cursor={cursor} />
         ))}
       </ul>
     </nav>
@@ -30,11 +32,16 @@ const Tabs = () => {
 
 export default Tabs;
 
-const Tab = ({ text, href }: TabProps) => {
+const Tab = ({ text, href, cursor }: TabProps) => {
   const pathname = usePathname();
 
   return (
-    <Link className={"flex justify-center items-center flex-1 text-l"} href={href}>
+    <Link
+      className={`flex justify-center items-center flex-1 text-l ${
+        cursor === "pointer" ? "cursor-pointer" : "cursor-auto opacity-30"
+      }`}
+      href={href}
+    >
       <li>
         <div className={"relative flex pb-4"}>
           <span className={pathname === href ? "font-semibold" : ""}>{text}</span>

@@ -1,16 +1,3 @@
-export interface MyInfo {
-  createdAt: string;
-  modifiedAt: string;
-  memberNickName: string;
-  memberEmailId: string;
-  memberUniqueId: string;
-  profileImage: string;
-  social: string;
-  introduce: string;
-  point: number;
-  authority: string;
-}
-
 export interface FeedData {
   content: string;
   createdAt?: string;
@@ -23,7 +10,6 @@ export interface FeedData {
   products?: number[];
   replyCount: number;
   stored?: boolean;
-  MyInfo: MyInfo;
 }
 
 export interface FeedResponse {
