@@ -2,8 +2,9 @@ import { Feed } from "@/apis/interfaces/Ranking";
 import Image from "next/image";
 
 const ImageSlide = ({ feedsList }: { feedsList: Feed[] }) => {
-  const pictures = feedsList[0].pictures.slice(0, 3).concat(Array(3 - feedsList[0].pictures.length).fill("/images"));
-  console.log(pictures);
+  const pictures = feedsList[0].pictures
+    .slice(0, 3)
+    .concat(Array(3 - feedsList[0].pictures.length).fill(feedsList[0].pictures[0]));
 
   return (
     <div className="flex gap-2 px-3">
