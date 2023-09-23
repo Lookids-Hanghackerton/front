@@ -7,7 +7,7 @@ import Measure from "react-measure";
 
 const Feeds = ({ feeds }: { feeds: FeedData[] }) => {
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={{ 200: 2, 600: 3 }} className={"px-5"}>
+    <ResponsiveMasonry columnsCountBreakPoints={{ 200: 2, 600: 3 }} className={"px-5"} key={feeds.length}>
       <Masonry gutter={"10px"}>
         {feeds.map(({ feedsId, content, likeCount, replyCount, pictures, hashTag, member }) => (
           <Measure key={feedsId}>

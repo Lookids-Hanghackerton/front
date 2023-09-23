@@ -5,6 +5,7 @@ import ProfileButton from "@/components/mypage/ProfileButton";
 import FollowCounter from "@/components/mypage/FollowCounter";
 import ProfileHeader from "@/components/mypage/ProfileHeader";
 import { Info } from "@/apis/interfaces/MyPage";
+import ProfileEdit from "./edit/ProfileEdit";
 import ProfileImageEx from "@/components/mypage/ProfileImageEx";
 import { getMyFeeds } from "@/apis/controllers/useGetMyFeeds";
 
@@ -21,12 +22,12 @@ const Page = async () => {
         <FollowCounter />
       </div>
       <div>
-        <div className="py-5 px-10">
-          소개글을 작성해주세요
-        </div>
+        <div className="py-5 px-10">소개글을 작성해주세요</div>
       </div>
       <ProfileButton />
       <FeedsTabs />
+      <ProfileEdit />
+
       {/* <ProfileFeeds feedsList={feedsList} /> */}
     </>
   );
