@@ -1,11 +1,10 @@
 "use client";
 
-import Filters from "@components/style/trend/Filters";
+import ProfileFilters from "./ProfileFilters";
 import { useState } from "react";
-import { useGetTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
 import { useGetMyFeeds } from "@/apis/controllers/useGetMyFeeds";
 import { FeedResponse } from "@/apis/interfaces/Feeds";
-import Feeds from "@components/style/trend/Feeds";
+import MyFeeds from "./MyFeeds";
 
 export type FilterItem = (typeof FILTER_ITEMS)[number];
 
@@ -20,8 +19,8 @@ const ProfileFeeds = ({ feedList }: { feedList: FeedResponse }) => {
 
   return (
     <div>
-      <Filters filtered={filtered} onClick={filterHandler} />
-      <Feeds feeds={data.data.feedsList} />
+      <ProfileFilters filtered={filtered} onClick={filterHandler} />
+      <MyFeeds feeds={data.feedList} />
     </div>
   );
 };

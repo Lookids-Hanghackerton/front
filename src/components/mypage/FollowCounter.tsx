@@ -4,17 +4,26 @@ import { Info } from "@/apis/interfaces/MyPage";
 import { api } from "@/utils/axios/api";
 import { getCookie, COOKIE_NAME } from "@/lib/cookie/cookie";
 import Link from "next/link";
+import { useGetFeed, getFeed } from "@/apis/controllers/useGetFeed";
 
 const getMyfeeds = async () => {
   const { data } = await api.get(`mypage/${cookie?.memberUniqueId}?sort=latest`);
   return data;
 }
 
+
+
+
 const cookie = getCookie(COOKIE_NAME);
 const FollowCounter = () => {
   console.log(cookie);
   const {data} = useQuery(["data"], () => getMyfeeds());
   console.log(data);  
+  
+  
+  console.log(getFeed(1));  
+
+
   return (
     <>
       <ul className="flex justify-around items-center flex-1">
