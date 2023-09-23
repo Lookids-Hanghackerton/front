@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
-import ArrowHeader from "@/layout/header/ArrowHeader";
-import DefaultHeader from "@/layout/header/DefaultHeader";
-import Right from "@/layout/header/Right";
-import Center from "@/layout/header/Center";
+import ArrowHeader from "@layout/header/ArrowHeader";
+import Center from "@layout/header/Center";
 
 interface LayoutProps {
   children: ReactNode;
@@ -11,11 +9,11 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <ArrowHeader right={<Right isText={false}/>} center={<Center isText={true} text={"UserName"}/>}/>
-      <DefaultHeader/>
-      <div>{children}</div>
+      <ArrowHeader center={<Center isText={true} text={"님의 팔로워"} />} />
+      {children}
     </>
   );
 };
 
 export default Layout;
+
