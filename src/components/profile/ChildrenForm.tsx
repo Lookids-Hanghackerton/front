@@ -6,7 +6,6 @@ import {
   FormLabel,
   Card,
   Button,
-  Text,
   RadioGroup,
   Stack,
   NumberInput,
@@ -16,25 +15,35 @@ import {
   NumberDecrementStepper,
   Divider,
   Input,
+  Radio,
+  InputGroup,
+  InputRightAddon,
 } from "@chakra-ui/react";
 import { Child } from "./ProfileEditForm";
 
-const ChildrenForm = ({ children }: { children: Child[] }) => {
+interface ChildrenFormProps {
+  onSubmit?: (values: FieldValues) => void;
+  onSubmitEdit?: (id: number) => void;
+  type: "post" | "put";
+}
+
+const ChildrenForm = ({ onSubmit = () => {}, onSubmitEdit = () => {}, type }: ChildrenFormProps) => {
   const { register, handleSubmit, formState } = useForm<Child>({
     defaultValues: {
       childrenNickName: "",
-      childrenBrith: "",
+      childrenBirth: "",
       childrenSex: "",
       childrenHeight: 0,
       childrenWeight: 0,
     },
   });
   const [childSex, setChildSex] = useState<string>("female");
-  const [addActive, setAddActive] = useState(false);
 
   const onSubmitChild = (data: FieldValues) => {
-    const newChild = { ...data, childrendSex: childSex };
-    console.log(newChild);
+    const newChild = { ...data, childrenSex: childSex };
+
+    type === "post" && onSubmit(newChild);
+    type == "put" && onSubmitEdit(data.id);
   };
 
   return (
@@ -43,11 +52,19 @@ const ChildrenForm = ({ children }: { children: Child[] }) => {
         <FormControl className="flex flex-col gap-4">
           <div>
             <FormLabel>아이 이름</FormLabel>
-            <Input type="text" {...register("childrenNickName", { required: "이름을 입력하세요" })} />
+            <Input
+              type="text"
+              {...register("childrenNickName", { required: "이름을 입력하세요" })}
+              autoComplete="off"
+            />
           </div>
           <div>
             <FormLabel>생년월일</FormLabel>
-            <Input type="datetime-local" {...register("childrenBrith", { required: "생년월일을 입력하세요" })} />
+            <Input
+              type="datetime-local"
+              {...register("childrenBirth", { required: "생년월일을 입력하세요" })}
+              autoComplete="off"
+            />
           </div>
           <div>
             <FormLabel>성별</FormLabel>
@@ -66,16 +83,16 @@ const ChildrenForm = ({ children }: { children: Child[] }) => {
               </FormLabel>
 
               <div className="flex items-center gap-6">
-                <NumberInput defaultValue={2} min={0} max={100} className="flex-1">
-                  <NumberInputField maxLength={3} {...register("childrenHeight", { required: "키를 입력하세요" })} />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-                <Text fontSize={"xl"} w={12}>
-                  cm
-                </Text>
+                <InputGroup size="sm">
+                  <NumberInput defaultValue={2} min={0} max={100} className="flex-1">
+                    <NumberInputField maxLength={3} {...register("childrenHeight", { required: "키를 입력하세요" })} />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                  <InputRightAddon children="cm" />
+                </InputGroup>
               </div>
             </div>
 
@@ -87,19 +104,19 @@ const ChildrenForm = ({ children }: { children: Child[] }) => {
               </FormLabel>
 
               <div className="flex items-center gap-6">
-                <NumberInput defaultValue={2} min={0} step={0.1} max={100} className="flex-1">
-                  <NumberInputField
-                    maxLength={3}
-                    {...register("childrenWeight", { required: "몸무게를 입력하세요" })}
-                  />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-                <Text fontSize={"xl"} w={12}>
-                  kg
-                </Text>
+                <InputGroup size="sm">
+                  <NumberInput defaultValue={2} min={0} step={0.1} max={100} className="flex-1">
+                    <NumberInputField
+                      maxLength={3}
+                      {...register("childrenWeight", { required: "몸무게를 입력하세요" })}
+                    />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                  <InputRightAddon children="kg" />
+                </InputGroup>
               </div>
             </div>
           </div>

@@ -1,20 +1,16 @@
-import { Card, Text, Badge, Button } from "@chakra-ui/react";
+import { Card, Text, Badge, Button, Input } from "@chakra-ui/react";
 import { Child } from "./ProfileEditForm";
 import { BiEdit } from "react-icons/bi";
 
-const Children = ({ child, onClick }: { child: Child; onClick: (id: number) => void }) => {
+const ChildrenEdit = ({ child, onClick }: { child: Child; onClick: (id: number) => void }) => {
   return (
     <Card className="py-4" shadow="none">
       <div className="flex gap-4 items-center justify-between">
         <div className="flex gap-4 items-center">
           <div className="w-20 h-20 rounded-2xl bg-slate-500" />
           <div>
-            <Text fontSize="xl" as="b">
-              {child.childrenNickName}
-            </Text>
-            <Text fontSize="md" className="mb-1">
-              {child.childrenBirth}
-            </Text>
+            <Input value={child.childrenNickName} />
+            <Input value={child.childrenBirth} />
             <div className="flex gap-2">
               <Badge>{child.childrenSex === "female" ? "여" : "남"}</Badge>
               <Badge variant={"outline"}>{child.childrenHeight}cm</Badge>
@@ -31,4 +27,4 @@ const Children = ({ child, onClick }: { child: Child; onClick: (id: number) => v
   );
 };
 
-export default Children;
+export default ChildrenEdit;

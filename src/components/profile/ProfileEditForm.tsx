@@ -4,9 +4,16 @@ import { FieldValues, useForm } from "react-hook-form";
 import { FormControl, FormLabel, Card, Button, Text, Image, Input } from "@chakra-ui/react";
 import Children from "./Children";
 import ChildrenForm from "./ChildrenForm";
+import { useQuery } from "@tanstack/react-query";
+import { getMemberInfo, postChildren, putChildren, putMemberInfo } from "@/apis/controllers/useUserProfile";
+import { COOKIE_NAME, getCookie } from "@/lib/cookie/cookie";
+import ChildrenEdit from "./ChildrenEdit";
 
 export interface User {
   memberNickName: string;
+  memberEmailId: string;
+  profileImage: string;
+  point: 0;
   introduce: string;
   childrenList: Child[];
 }
@@ -14,51 +21,84 @@ export interface User {
 export interface Child {
   childrenNickName: string;
   childrenSex: string;
-  childrenBrith: string;
+  childrenBirth: string;
   childrenHeight: number;
   childrenWeight: number;
+  childrenId?: number;
 }
 
 const ProfileEditForm = () => {
-  const [addActive, setAddActive] = useState(false);
-  const { register, handleSubmit, formState } = useForm<User>({
+  const userData = getCookie(COOKIE_NAME) || {
+    memberUniqueId: "",
+  };
+  const { data: fetchedData }: any = useQuery(["memberUniqueId"], () =>
+    getMemberInfo(userData.memberUniqueId).then(e => e.data.data),
+  );
+
+  const { register, handleSubmit, watch, setValue, getValues } = useForm<User>({
     defaultValues: {
-      memberNickName: "",
-      introduce: "",
-      childrenList: [],
+      memberNickName: fetchedData?.memberNickName,
+      introduce: fetchedData?.introduce,
+      childrenList: fetchedData?.childrenList || [],
     },
   });
+  const [addActive, setAddActive] = useState(false);
+  const [editActive, setEditActive] = useState(false);
+  const [editId, setEditId] = useState(-1);
 
+  const watchChildrenList: Child[] =
+    watch("childrenList").length === 0 ? fetchedData?.childrenList : watch("childrenList");
+
+  // 핸들러
   const onSubmitProfile = (data: FieldValues) => {
-    console.log(data);
+    const { memberNickName, introduce } = data;
+    // const { feedsList, ...left } = fetchedData;
+    // const newData = { ...fetchedData, ...data } as User;
+    putMemberInfo({ memberNickName, introduce });
   };
 
-  const data: User = {
-    memberNickName: "",
-    introduce: "",
-    childrenList: [
-      {
-        childrenNickName: "최호야",
-        childrenSex: "여",
-        childrenBrith: "2022-03-12",
-        childrenHeight: 89,
-        childrenWeight: 11,
-      },
-      {
-        childrenNickName: "세준이",
-        childrenSex: "남",
-        childrenBrith: "1999-03-12",
-        childrenHeight: 182,
-        childrenWeight: 86,
-      },
-      {
-        childrenNickName: "박호랑",
-        childrenSex: "남",
-        childrenBrith: "2023-03-12",
-        childrenHeight: 30,
-        childrenWeight: 16,
-      },
-    ],
+  const onSubmitChildren = (data: FieldValues) => {
+    const prev = watch("childrenList");
+    const { childrenWeight, childrenHeight, childrenBirth } = data;
+    const newChildren = {
+      ...data,
+      childrenBirth: childrenBirth.slice(0, 10),
+      childrenWeight: Number(childrenWeight),
+      childrenHeight: Number(childrenHeight),
+    } as Child;
+
+    prev.push(newChildren);
+
+    setValue("childrenList", prev);
+    setAddActive(false);
+
+    postChildren(newChildren);
+  };
+
+  const editToggle = (id: number) => {
+    if (id === editId) {
+      setEditActive(!editActive);
+      editActive ? setEditId(-1) : setEditId(id);
+    } else {
+      setEditActive(true);
+      setEditId(id);
+    }
+  };
+
+  const editChildHandler = (id: number) => {
+    const childrenList = getValues("childrenList");
+    const child = childrenList.find(child => child.childrenId === id);
+    if (!child) return;
+
+    const { childrenWeight, childrenHeight, childrenBirth } = child;
+    const updateChild = {
+      ...child,
+      childrenBirth: childrenBirth.slice(0, 10),
+      childrenWeight: Number(childrenWeight),
+      childrenHeight: Number(childrenHeight),
+    } as Child;
+
+    putChildren(updateChild, id);
   };
 
   return (
@@ -71,11 +111,16 @@ const ProfileEditForm = () => {
             </Text>
             <div>
               <FormLabel>이름</FormLabel>
-              <Input type="text" {...register("memberNickName", { required: "이름을 입력하세요" })} />
+              <Input
+                type="text"
+                defaultValue={fetchedData?.memberNickName}
+                {...register("memberNickName", { required: "이름을 입력하세요" })}
+                autoComplete="off"
+              />
             </div>
             <div>
               <FormLabel>소개</FormLabel>
-              <Input type="text" placeholder="소개글을 입력하세요" {...register("introduce")} />
+              <Input type="text" placeholder="소개글을 입력하세요" {...register("introduce")} autoComplete="off" />
             </div>
 
             <Button colorScheme="blue" type="submit">
@@ -102,12 +147,18 @@ const ProfileEditForm = () => {
           </Button>
         </div>
 
-        {addActive && <ChildrenForm children={data.childrenList} />}
+        {addActive && fetchedData && <ChildrenForm type="post" onSubmit={onSubmitChildren} />}
 
         <ul className="pt-6 pb-4">
-          {data.childrenList.map((e, idx) => {
-            return <Children child={e} key={idx} />;
-          })}
+          {watchChildrenList &&
+            watchChildrenList.map((e, idx) => {
+              return (
+                <>
+                  <Children child={e} key={idx} onClick={editToggle} />
+                  {editActive && e.childrenId === editId && <ChildrenForm type="put" onSubmitEdit={editChildHandler} />}
+                </>
+              );
+            })}
         </ul>
       </Card>
     </div>
