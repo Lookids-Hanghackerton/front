@@ -13,7 +13,7 @@ const ProfileHeader = ({ text }: { text: string }) => {
 
   return (
     <>
-      <header className={"flex items-center py-5 px-3"}>
+      <header className={"flex items-center py-5 px-10"}>
         <BsArrowLeft className={"cursor-pointer"} size={28} onClick={() => router.back()} />
         <div className={"flex-1 pl-6"}>
           <p className={"text-xl font-semibold"}>{text}</p>

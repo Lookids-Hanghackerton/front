@@ -16,7 +16,7 @@ const Page = async () => {
         {/*<FollowCounter />*/}
       </div>
       <div>
-        <div className="py-5 px-10">소개글을 작성해주세요</div>
+        <div className="py-5 px-8">안녕하세요:-)</div>
       </div>
       <ProfileButton />
       <FeedsTabs />
