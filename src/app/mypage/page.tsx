@@ -20,7 +20,7 @@ const Page = async () => {
         <FollowCounter memberUniqueId={cookie.memberUniqueId} memberNickName={cookie.memberNickName} />
       </div>
       <div>
-        <div className="py-5 px-10">소개글을 작성해주세요</div>
+        <div className="py-5 px-8">소개글을 작성해주세요</div>
       </div>
       <ProfileButton />
       {/*<FeedsTabs />*/}

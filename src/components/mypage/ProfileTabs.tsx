@@ -12,6 +12,7 @@ const TabItems = [
   { text: "내 프로필", href: "/mypage" },
   { text: "내 포인트 사용하기", href: "/mypage/point" },
 ];
+
 const ProfileTabs = () => {
   return (
     <nav>

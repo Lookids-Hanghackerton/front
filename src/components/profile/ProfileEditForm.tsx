@@ -107,7 +107,7 @@ const ProfileEditForm = () => {
         <form onSubmit={handleSubmit(onSubmitProfile)}>
           <FormControl className="flex flex-col gap-4">
             <Text fontSize="2xl" as="b">
-              프로필 편집
+              정보 수정
             </Text>
             <div>
               <FormLabel>이름</FormLabel>
@@ -120,7 +120,13 @@ const ProfileEditForm = () => {
             </div>
             <div>
               <FormLabel>소개</FormLabel>
-              <Input type="text" placeholder="소개글을 입력하세요" {...register("introduce")} autoComplete="off" />
+              <Input
+                type="text"
+                defaultValue={fetchedData?.introduce}
+                placeholder="소개글을 입력하세요"
+                {...register("introduce")}
+                autoComplete="off"
+              />
             </div>
 
             <Button colorScheme="blue" type="submit">

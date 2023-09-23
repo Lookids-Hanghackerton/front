@@ -1,15 +1,16 @@
 "use client";
+import { Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 const FollowCounter = ({ memberUniqueId, memberNickName }: { memberUniqueId: string; memberNickName: string }) => {
   return (
     <>
-      <ul className="flex justify-around items-center flex-1">
+      <ul className="flex justify-around items-center flex-1 ">
         <li>
           <div className="hover:font-bold">
             <Link className="flex flex-col items-center" href={"/mypage"}>
-              <span>10</span>
-              <span>게시글</span>
+              <Text fontSize={30}>10</Text>
+              <Text fontSize={18}>게시글</Text>
             </Link>
           </div>
         </li>
@@ -19,8 +20,8 @@ const FollowCounter = ({ memberUniqueId, memberNickName }: { memberUniqueId: str
               className="flex flex-col items-center"
               href={`/follow?memberNickName=${memberNickName}&memberUniqueId=${memberUniqueId}&tab=follower`}
             >
-              <span>20</span>
-              <span>팔로워</span>
+              <Text fontSize={30}>20</Text>
+              <Text fontSize={18}>팔로워</Text>
             </Link>
           </div>
         </li>
@@ -30,8 +31,8 @@ const FollowCounter = ({ memberUniqueId, memberNickName }: { memberUniqueId: str
               className="flex flex-col items-center"
               href={`/follow?memberNickName=${memberNickName}&memberUniqueId=${memberUniqueId}&tab=following`}
             >
-              <span>30</span>
-              <span>팔로잉</span>
+              <Text fontSize={30}>32</Text>
+              <Text fontSize={18}>팔로잉</Text>
             </Link>
           </div>
         </li>

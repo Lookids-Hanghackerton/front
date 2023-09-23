@@ -6,9 +6,6 @@ const Page = () => {
     <>
       <ProfileHeader text={"UserName"} />
       <ProfileTabs />
-      <div>
-        <div></div>
-      </div>
     </>
   );
 };

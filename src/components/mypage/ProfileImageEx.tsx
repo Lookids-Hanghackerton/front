@@ -7,7 +7,7 @@ const ProfileImageEx = ({ image }: { image: string }) => {
 
   return (
     <>
-      <div className={"relative w-24 h-24 overflow-hidden rounded-full"}>
+      <div className={"ml-4 mt-4 relative w-32 h-32 overflow-hidden rounded-full"}>
         <Image fill={true} objectFit={"cover"} src={image} alt="프로필 기본 이미지" />
       </div>
     </>
