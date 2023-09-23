@@ -7,7 +7,7 @@ interface FiltersProps {
 
 const ProfileFilters = ({ filtered, onClick }: FiltersProps) => {
   return (
-    <ul className={"flex justify-end items-center pt-4 px-5 pb-6"}>
+    <ul className={"flex justify-end items-center pt-4 px-5 pb-4"}>
       {FILTER_ITEMS.map(text => (
         <li
           key={text}
