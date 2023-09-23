@@ -1,13 +1,13 @@
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { AiOutlineHeart } from "react-icons/ai";
 import Image from "next/image";
 import Link from "next/link";
 import { FeedData } from "@/apis/interfaces/Feeds";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Measure from "react-measure";
 
 const Feeds = ({ feeds }: { feeds: FeedData[] }) => {
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={{ 200: 2, 600: 3 }} className={"px-5"}>
+    <ResponsiveMasonry columnsCountBreakPoints={{ 200: 2, 600: 3 }} className={"px-5"} key={feeds.length}>
       <Masonry gutter={"10px"}>
         {feeds.map(({ feedsId, content, likeCount, replyCount, pictures, hashTag, member }) => (
           <Measure key={feedsId}>
