@@ -5,14 +5,16 @@ import FollowCounter from "@/components/mypage/FollowCounter";
 import ProfileImageEx from "@/components/mypage/ProfileImageEx";
 import { cookies } from "next/headers";
 import ProfileHeader from "@components/mypage/ProfileHeader";
+import { getMyFeeds } from "@/apis/controllers/useGetMyFeeds";
+import ProfileFeeds from "@/components/mypage/ProfileFeeds";
 
 const Page = async () => {
-  // const feedsList = await getMyFeeds("최신순")
-
+  
   const cookieStore = cookies();
-
+  
   const cookie = cookieStore.getAll().map(cookie => JSON.parse(cookie.value))[0] as Cookie;
-
+  
+  const feedsList = await getMyFeeds("최신순", cookie.memberUniqueId);
   return (
     <>
       <ProfileHeader text={cookie.memberNickName} />
@@ -26,7 +28,7 @@ const Page = async () => {
       </div>
       <ProfileButton />
       <FeedsTabs />
-      {/* <ProfileFeeds feedsList={feedsList} /> */}
+      <ProfileFeeds feedsList={feedsList} memberUniqueId={cookie.memberUniqueId}/>
     </>
   );
 };
