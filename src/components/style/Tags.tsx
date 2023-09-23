@@ -1,59 +1,27 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
+import useHorizontalDrag from "@hooks/useHorizontalDrag";
+import { useGetTrendTags } from "@/apis/controllers/style/useTrendTags";
 
-const Tags = () => {
-  const TagList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-  const scrollRef = useRef<any>(null);
+const Tags = ({ tagList }: { tagList: any }) => {
+  const { scrollRef, onDragStart, onDragMove, onDragEnd } = useHorizontalDrag();
 
-  const [isDrag, setIsDrag] = useState(false);
-  const [startX, setStartX] = useState<number>(0);
-  const onDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDrag(true);
-    setStartX(e.pageX + scrollRef.current.scrollLeft);
-  };
-
-  const onDragEnd = () => {
-    setIsDrag(false);
-  };
-
-  const onDragMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isDrag) {
-      scrollRef.current.scrollLeft = startX - e.pageX;
-    }
-  };
-
-  /**
-   * onDragMove의 이벤트가 많이 일어나서 throttling이 필요하다면 활성화 해야할듯?
-   */
-  // const throttle = (func: (e: React.MouseEvent<HTMLDivElement>) => void, ms: number) => {
-  //   let throttled = false;
-  //   return (e: React.MouseEvent<HTMLDivElement>) => {
-  //     if (!throttled) {
-  //       throttled = true;
-  //       setTimeout(() => {
-  //         func(e);
-  //         throttled = false;
-  //       }, ms);
-  //     }
-  //   };
-  // };
-  // const onThrottleDragMove = throttle(onDragMove, 100);
-
+  const { data } = useGetTrendTags({ tagList });
+  const tags = data.data;
   return (
     <div
-      className={"w-full py-6 overflow-auto no-scroll"}
+      className={"w-full pt-4 pb-2 overflow-auto no-scroll"}
       ref={scrollRef}
       onMouseDown={onDragStart}
       onMouseMove={onDragMove}
       onMouseLeave={onDragEnd}
       onMouseUp={onDragEnd}
     >
-      <ul className={"inline-flex px-12 gap-7"}>
-        {TagList.map((_, idx) => (
-          <Tag key={idx} />
+      <ul className={"inline-flex px-3 gap-7"}>
+        {tags.map((tag: string, idx: number) => (
+          <Tag key={idx} tag={tag} />
         ))}
       </ul>
     </div>
@@ -62,13 +30,13 @@ const Tags = () => {
 
 export default Tags;
 
-const Tag = () => {
+const Tag = ({ tag }: { tag: string }) => {
   return (
-    <li className={"flex-1 flex flex-col justify-center items-center gap-2.5 cursor-pointer"}>
-      <div className={"w-20 h-20 rounded-full bg-black overflow-hidden"}>
-        <Image width={112} height={112} src={"https://source.unsplash.com/random"} alt={"image"} />
+    <li className={"flex-1 flex flex-col justify-start items-center gap-2.5 cursor-pointer"}>
+      <div className={"relative w-16 h-16 rounded-full bg-black overflow-hidden"}>
+        <Image fill={true} src={"https://source.unsplash.com/random"} alt={"image"} />
       </div>
-      <div className={"w-20 text-center break-all text-gray-700 text-sm"}>#웰컴어텀챌린지</div>
+      <div className={"w-16 text-center break-all text-gray-700 text-sm"}>#{tag}</div>
     </li>
   );
 };

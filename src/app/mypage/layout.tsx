@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import DefaultHeader from "@layout/header/DefaultHeader";
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,7 +7,11 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <DefaultHeader />
+      {/* <ArrowHeader 
+        right={<Right isText={false}/>} 
+        center={<Center isText={true} 
+        text={"UserName"}/>}
+      /> */}
       <div>{children}</div>
     </>
   );

@@ -1,5 +1,12 @@
+"use client";
+import SearchTemplate from "@components/search/Search";
+
 const Page = () => {
-  return <div></div>;
+  return (
+    <>
+      <SearchTemplate />
+    </>
+  );
 };
 
 export default Page;

@@ -13,7 +13,7 @@ const TabItems = [
   { text: "랭킹", href: "/style/ranking" },
   {
     text: "팔로우",
-    href: "/style/fallow",
+    href: "/style/following",
   },
 ];
 const Tabs = () => {
