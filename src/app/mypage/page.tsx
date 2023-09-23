@@ -4,17 +4,14 @@ import ProfileTabs from "@/components/mypage/ProfileTabs";
 import ProfileButton from "@/components/mypage/ProfileButton";
 import FollowCounter from "@/components/mypage/FollowCounter";
 import ProfileHeader from "@/components/mypage/ProfileHeader";
-import { getTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
 import { Info } from "@/apis/interfaces/MyPage";
 import ProfileImageEx from "@/components/mypage/ProfileImageEx";
 import { getMyFeeds } from "@/apis/controllers/useGetMyFeeds";
 
 
-
-const Page = async ({ memberUniqueId }: Info) => {
-  // const feedList = await getTrendFeeds("인기순");
-  const feedList = await getMyFeeds("최신순");
-
+const Page = async () => {
+  // const feedsList = await getMyFeeds("최신순")
+  
   return (
     <>
       {/* <ProfileHeader text={"UserName"}/> */}
@@ -30,7 +27,7 @@ const Page = async ({ memberUniqueId }: Info) => {
       </div>
       <ProfileButton />
       <FeedsTabs />
-      {/* <ProfileFeeds feedList={feedList} /> */}
+      {/* <ProfileFeeds feedsList={feedsList} /> */}
     </>
   );
 };

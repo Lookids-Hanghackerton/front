@@ -1,7 +1,7 @@
 export interface MyInfo {
   createdAt: string;
   modifiedAt: string;
-  memberName: string;
+  memberNickName: string;
   memberEmailId: string;
   memberUniqueId: string;
   profileImage: string;
@@ -13,16 +13,17 @@ export interface MyInfo {
 
 export interface FeedData {
   content: string;
-  createdAt: string;
+  createdAt?: string;
   feedsId: number;
   hashTag: string[];
   likeCount: number;
-  memberUniqueId: string;
-  modifiedAt: string;
+  memberUniqueId?: string;
+  modifiedAt?: string;
   pictures: string[];
-  products: number[];
+  products?: number[];
   replyCount: number;
-  stored: boolean;
+  stored?: boolean;
+  MyInfo: MyInfo;
 }
 
 export interface FeedResponse {

@@ -11,17 +11,15 @@ const getMyfeeds = async () => {
   return data;
 }
 
-
-
-
 const cookie = getCookie(COOKIE_NAME);
+
 const FollowCounter = () => {
   console.log(cookie);
   const {data} = useQuery(["data"], () => getMyfeeds());
-  console.log(data);  
+  // console.log(data);  
   
   
-  console.log(getFeed(1));  
+  // console.log(getFeed(1));  
 
 
   return (

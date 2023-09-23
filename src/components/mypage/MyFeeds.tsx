@@ -1,20 +1,20 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import Image from "next/image";
 import Link from "next/link";
-import { FeedData } from "@/apis/interfaces/Feeds";
+import { FeedData } from "@/apis/interfaces/MyFeed";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Measure from "react-measure";
 
 const MyFeeds = ({ feeds }: { feeds: FeedData[] }) => {
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={{ 200: 2, 600: 3 }} className={"px-5"} key={feeds.length}>
+    <ResponsiveMasonry columnsCountBreakPoints={{ 200: 2, 600: 3 }} className={"px-5"}>
       <Masonry gutter={"10px"}>
-        {feeds.map(({ feedsId, content, likeCount, replyCount, pictures, hashTag, member }) => (
+        {feeds?.map(({ feedsId, content, likeCount, replyCount, pictures, hashTag, MyInfo }) => (
           <Measure key={feedsId}>
             {({ measureRef }) => (
               <div ref={measureRef}>
                 <MyFeedDetail
-                  member={member}
+                  MyInfo={MyInfo}
                   feedsId={feedsId}
                   content={content}
                   likeCount={likeCount}
@@ -33,7 +33,7 @@ const MyFeeds = ({ feeds }: { feeds: FeedData[] }) => {
 
 export default MyFeeds;
 
-export const MyFeedDetail = ({ feedsId, content, likeCount, pictures, member }: FeedData) => {
+export const MyFeedDetail = ({ feedsId, content, likeCount, pictures, MyInfo }: FeedData) => {
   return (
     <Link href={`/feed/${feedsId}`} className={"w-full cursor-pointer"}>
       <div className={"relative"}>
@@ -56,9 +56,9 @@ export const MyFeedDetail = ({ feedsId, content, likeCount, pictures, member }: 
         <div className={"flex items-center justify-between"}>
           <div className={"flex items-center"}>
             <div className={"relative w-6 h-6 mr-2"}>
-              <Image src={member.profileImage} alt={"avatar"} className={"rounded-full"} fill={true} sizes={"full"} />
+              <Image src={MyInfo.profileImage} alt={"avatar"} className={"rounded-full"} fill={true} sizes={"full"} />
             </div>
-            <div className={"text-xs truncate"}>{member.memberNickName}</div>
+            <div className={"text-xs truncate"}>{MyInfo.memberNickName}</div>
           </div>
           <div className={"flex items-center gap-1"}>
             <AiOutlineHeart className={"text-gray-500"} />
