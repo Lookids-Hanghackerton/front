@@ -1,6 +1,16 @@
 "use client"
+import { useQuery } from "@tanstack/react-query";
+import { Info } from "@/apis/interfaces/MyPage";
+import { api } from "@/utils/axios/api";
 
-const FollowCounter = () => {
+const getMyfeeds = async (memberUniqueId: string) => {
+  const { data } = await api.get("mypage/236bcfe1-73f1-47ee-ab4c-86916778af22?sort=latest");
+  return data;
+}
+
+const FollowCounter = ({memberUniqueId}: Info) => {
+  const {data} = useQuery(["memberUniqueId"], () => getMyfeeds(memberUniqueId));
+  console.log(data);  
   return (
     <>
       <ul className="flex justify-around items-center w-full">
@@ -23,6 +33,7 @@ const FollowCounter = () => {
           </div>
         </li>
       </ul>
+      
     </>
   )
 }

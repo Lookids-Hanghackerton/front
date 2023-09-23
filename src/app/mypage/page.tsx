@@ -7,9 +7,20 @@ import ProfileButton from "@/components/mypage/ProfileButton";
 import FollowCounter from "@/components/mypage/FollowCounter";
 import ProfileHeader from "@/components/mypage/ProfileHeader";
 import { getTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/utils/axios/api";
+import { Info } from "@/apis/interfaces/MyPage";
 
-const Page = async () => {
+const getMyfeeds = async (memberUniqueId: string) => {
+  const { data } = await api.get(`mypage/${memberUniqueId}`);
+  return data;
+}
+
+
+const Page = async ({ memberUniqueId }: Info) => {
   const feedList = await getTrendFeeds("인기순");
+  // const query = useQuery(["memberUniqueId"], () => getMyfeeds(memberUniqueId));
+  // console.log(query);
   return (
     <>
       <ProfileHeader text={"UserName"}/>
