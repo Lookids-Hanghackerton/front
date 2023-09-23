@@ -33,7 +33,7 @@ const NAV_ITEMS: NavItemProps[] = [
   {
     icon: <CgProfile size={"28px"} />,
     text: "마이페이지",
-    href: "/profile",
+    href: "/mypage",
   },
 ];
 
