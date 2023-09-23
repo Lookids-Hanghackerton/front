@@ -10,7 +10,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <ArrowHeader center={<Center isText={true} text={"게시글"} />} />
+      <ArrowHeader center={<Center isText={true} text={"사용자명"} />} />
 
       <div>{children}</div>
     </>
