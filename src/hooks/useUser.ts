@@ -14,7 +14,7 @@ export async function getUser(user: UnKnownUser): Promise<UnKnownUser> {
   if (!user) return null;
 
   const { data } = await api.get(`${AUTH_API.getUser}${user}`, {
-    headers: { Authorization: user.accessKey },
+    headers: { AccessKey: user.accessKey },
   });
 
   return data;
