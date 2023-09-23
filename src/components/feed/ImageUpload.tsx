@@ -1,10 +1,19 @@
 "use client";
 
 import { useState, ChangeEvent } from "react";
+import { useRecoilState } from "recoil";
+import axios from "axios";
+
+import { selectImageState, userTokenState } from "../../states/atom/contentValue";
 
 const ImageUpload = () => {
-  const [selectImage, setSelectImage] = useState<File | null>(null);
+  // const [selectImage, setSelectImage] = useState<File | null>(null);
+  const [selectImage, setSelectImage] = useRecoilState(selectImageState);
   const [imagePreview, setImagePreview] = useState<string>("/noimage.gif");
+  // const userToken = useRecoilValue(userTokenState);
+
+  // const queryClient = useQueryClient();
+  const formData = new FormData();
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

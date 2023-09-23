@@ -1,4 +1,9 @@
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
+import { useRecoilState } from "recoil";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useRecoilValue } from "recoil";
+import { selectedResultState } from "../../states/atom/contentValue";
 
 const SearchProductInfo = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -6,13 +11,20 @@ const SearchProductInfo = () => {
   const [productInfo, setProductInfo] = useState<
     { productsId: number; manufacturesName: string; productsName: string }[]
   >([]);
+  const [productTag, setProductTag] = useState("# 상품 태그를 추가해 보세요 ");
+  const selectedResult = useRecoilValue(selectedResultState);
 
   const openProductTagModal = () => setIsOpenModal(!isOpenModal);
 
-  const handleClickProduct = () => {
-    setIsOpenModal(!isOpenModal);
-    setSearchProduct("");
-  };
+  // const handleClickProduct = () => {
+  //   setIsOpenModal(!isOpenModal);
+  //   setSearchProduct("");
+  // };
+
+  // const { data: results } = useQuery(["search", productTag], async () => {
+  //   const response = await axios.get(`http://49.50.161.207:8080/product/find/${productTag}`);
+  //   return response.data;
+  // });
 
   const handleProductChange = async (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
@@ -20,7 +32,7 @@ const SearchProductInfo = () => {
     setSearchProduct(inputValue);
 
     try {
-      const response = await fetch(`http://125.181.213.112:8080/product/find/${inputValue}`);
+      const response = await fetch(`http://49.50.161.207:8080/product/find/${inputValue}`);
       const data = await response.json();
       console.log(data.data.productsList);
       setProductInfo(data.data.productsList);
@@ -29,14 +41,22 @@ const SearchProductInfo = () => {
     }
   };
 
+  // const handleAddProductTag = () => {
+  //   onChange={handleAddProductTag}
+  // }
+  const clickProductInfo = () => {
+    setIsOpenModal(!isOpenModal);
+    // setProductTag(results);
+  };
+
   return (
     <>
       <div className="flex justify-center items-center">
         <button
-          className="text-gray-500 flex justify-center items-center cursor-pointer bg-red-300"
+          className="text-gray-500 flex justify-center items-center cursor-pointer "
           onClick={openProductTagModal}
         >
-          {"# 상품 태그를 추가해 보세요"}
+          {productTag}
         </button>
         {isOpenModal && (
           <div>
@@ -49,25 +69,29 @@ const SearchProductInfo = () => {
                   placeholder="상품정보를 입력하세요"
                   onChange={handleProductChange}
                 />
-                <ul>
+                <ul className="px-4 ">
                   {productInfo &&
                     productInfo.map(item => {
                       return (
-                        <li key={item.productsId}>
+                        <li
+                          className="cursor-pointer hover:bg-sky-500"
+                          onClick={clickProductInfo}
+                          key={item.productsId}
+                        >
                           상품명/회사 : {item.productsName} / {item.manufacturesName}
                         </li>
                       );
                     })}
                 </ul>
 
-                <div className="flex justify-center items-center">
+                {/* <div className="flex justify-center items-center">
                   <button
                     className="min-w-0 w-2/12 mx-8 my-8 p-4 font-medium text-sm outline-0 bg-blue-500 rounded-lg"
                     onClick={handleClickProduct}
                   >
                     {"완료 "}
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
