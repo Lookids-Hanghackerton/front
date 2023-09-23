@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import useHorizontalDrag from "@hooks/useHorizontalDrag";
-import { useGetTrendTags } from "@/apis/controllers/useTrendTags";
+import { useGetTrendTags } from "@/apis/controllers/style/useTrendTags";
 
 const Tags = ({ tagList }: { tagList: any }) => {
   const { scrollRef, onDragStart, onDragMove, onDragEnd } = useHorizontalDrag();
