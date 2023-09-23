@@ -6,11 +6,13 @@ import DefaultImage from "/public/blank.png";
 import Image from "next/image";
 import ProfileButton from "@/components/mypage/ProfileButton";
 import FollowCounter from "@/components/mypage/FollowCounter";
+import ProfileHeader from "@/components/mypage/ProfileHeader";
 
 const Page = async () => {
   const feedList = await getTrendFeeds("인기순");
   return (
     <>
+      <ProfileHeader text={"UserName"}/>
       <ProfileTabs />
       <div className="flex h-100 w-full px-10 py-5">
         <Image

@@ -1,72 +1,41 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { AiOutlinePlusCircle, AiOutlineCamera } from "react-icons/ai";
+import { usePathname, useRouter } from "next/navigation";
+import Tags from "@/components/style/Tags";
+import SearchProductInfo from "@/components/feed/SearchProductInfo";
+import Content from "@/components/feed/Content";
+import ImageUpload from "@/components/feed/ImageUpload";
 
-const Feed = () => {
-  // const pathname = usePathname();
+interface ProductInfo {
+  productsId: number;
+  productsName: string;
+  manufacturesName: string;
+  productsImage: string[];
+}
 
-  const [productInfo, setProductInfo] = useState({
-    name: "",
-  });
-  const [isOpenModal, setIsOpenModal] = useState(false);
+const Page = () => {
+  const router = useRouter();
+  const pathname = usePathname();
 
-  const openProductTagModal = () => setIsOpenModal(!isOpenModal);
-
-  const handleProductInfoChange = (e: any) => {
-    const { name, value } = e.target;
-    setProductInfo({
-      ...productInfo,
-      [name]: value,
-    });
-  };
-
-  const submitProductInfo = () => {
-    setIsOpenModal(!isOpenModal);
-  };
-
-  const productModal = () => {};
+  // useEffect(() => {
+  //   fetch(`http://125.181.213.112:8080/feed/write`)
+  //     .then(resp => resp.json())
+  //     .then(result => {
+  //       setProductInfo(result);
+  //     });
+  // }, []);
 
   return (
-    <div>
-      <div className="flex justify-end item-center">
-        <button className="bg-yellow-500 rounded-full ">등록</button>
-      </div>
-      <input type="file" accept="image/*" id="file" className="hidden"></input>
-      <label htmlFor="file" className=" bg-blue-500  flex justify-center items-center  mx-7 my-7">
-        <img className=" w-9/12 h-80 " src="/noimage.gif" alt="noImage"></img>
-      </label>
-
-      <p className="text-gray-500 flex justify-center items-center">이미지를 업로드 해주세요 </p>
-      <button
-        className="text-gray-500 flex justify-center items-center cursor-pointer bg-red-300"
-        onClick={openProductTagModal}
-      >
-        상품 태그를 추가해 보세요
-      </button>
-      {isOpenModal && (
-        <div className=" bg-black opacity-25 fixed top-0 left-0 w-full h-full flex justify-center items-center">
-          <div className="w-6/12 h-1/4 bg-pink-400 ">
-            <input
-              className="min-w-0 w-10/12 mx-8 my-8 p-4 font-medium text-sm outline-0 bg-gray-100 rounded-lg "
-              placeholder="상품정보를 입력하세요"
-            />
-            <button className="min-w-0 w-2/12 mx-8 my-8 p-4 font-medium text-sm outline-0 bg-blue-500 rounded-lg">
-              완료{" "}
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* <AiOutlinePlusCircle
-        size={"37px"}
-        className="bg-blue-500 fixed bottom-28 right-16 md:right-24 lg:right-28 rounded-full cursor-pointer "
-      ></AiOutlinePlusCircle> */}
-    </div>
+    <>
+      <ImageUpload />
+      <SearchProductInfo />
+      <Content />
+      {/* <Tags /> */}
+    </>
   );
 };
 
-export default Feed;
+export default Page;

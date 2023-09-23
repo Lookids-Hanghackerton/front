@@ -1,29 +1,29 @@
 "use client";
 
-import Filters from "@components/style/trend/Filters";
+import ProfileFilters from "./ProfileFilters";
 import { useState } from "react";
-import { useGetTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
-import { FeedResponse } from "@/apis/interfaces/Feeds";
-import Feeds from "@components/style/trend/Feeds";
-import { useGetFeed } from "@/apis/controllers/useGetFeed";
+import { useGetMyFeeds } from "@/apis/controllers/useGetMyFeeds";
+import { FeedResponse } from "@/apis/interfaces/MyFeed";
+import MyFeeds from "./MyFeeds";
 
 export type FilterItem = (typeof FILTER_ITEMS)[number];
 
-export const FILTER_ITEMS = ["인기순", "최신순"];
-const FilteredFeeds = ({ feedList }: { feedList: FeedResponse }) => {
-  const [filtered, setFiltered] = useState<FilterItem>("인기순");
+export const FILTER_ITEMS = ["최신순", "오래된순"];
+const ProfileFeeds = ({ feedsList }: { feedsList: FeedResponse }) => {
+  const [filtered, setFiltered] = useState<FilterItem>("최신순");
   const filterHandler = (target: FilterItem) => {
     setFiltered(target);
   };
 
-  const data = useGetTrendFeeds({ filtered, feedList });
-
+  const data = useGetMyFeeds({ filtered, feedsList });
+  console.log(data.data.feedsList);
   return (
     <div>
-      <Filters filtered={filtered} onClick={filterHandler} />
-      <Feeds feeds={data.data.feedsList} />
+      <ProfileFilters filtered={filtered} onClick={filterHandler} />
+      {/* {data&&<MyFeeds feeds={data.data.feedsList} />} */}
+      <MyFeeds feeds={data.data.feedsList} />
     </div>
   );
 };
 
-export default FilteredFeeds;
+export default ProfileFeeds;
