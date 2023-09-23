@@ -3,20 +3,20 @@
 import Filters from "@components/style/trend/Filters";
 import { useState } from "react";
 import { useGetTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
+import { useGetMyFeeds } from "@/apis/controllers/useGetMyFeeds";
 import { FeedResponse } from "@/apis/interfaces/Feeds";
 import Feeds from "@components/style/trend/Feeds";
-import { useGetFeed } from "@/apis/controllers/useGetFeed";
 
 export type FilterItem = (typeof FILTER_ITEMS)[number];
 
-export const FILTER_ITEMS = ["인기순", "최신순"];
-const FilteredFeeds = ({ feedList }: { feedList: FeedResponse }) => {
-  const [filtered, setFiltered] = useState<FilterItem>("인기순");
+export const FILTER_ITEMS = ["최신순", "오래된순"];
+const ProfileFeeds = ({ feedList }: { feedList: FeedResponse }) => {
+  const [filtered, setFiltered] = useState<FilterItem>("최신순");
   const filterHandler = (target: FilterItem) => {
     setFiltered(target);
   };
 
-  const data = useGetTrendFeeds({ filtered, feedList });
+  const data = useGetMyFeeds({ filtered, feedList, memberUniqueId });
 
   return (
     <div>
@@ -26,4 +26,4 @@ const FilteredFeeds = ({ feedList }: { feedList: FeedResponse }) => {
   );
 };
 
-export default FilteredFeeds;
+export default ProfileFeeds;

@@ -4,24 +4,19 @@ import { useRouter } from "next/navigation";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 import HamburgerDropdown from "./HamburgerDropdown";
+import { getCookie,COOKIE_NAME } from "@/lib/cookie/cookie";
 
-interface ArrowHeaderProps {
-  text: string;
-}
 
-/**
- * @param text UserName Props
- */
-
-const ProfileHeader = ({ text }: ArrowHeaderProps) => {
+const ProfileHeader = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const cookie = getCookie(COOKIE_NAME);
   return (
     <>
     <header className={"flex items-center py-5 px-3"}>
       <BsArrowLeft className={"cursor-pointer"} size={28} onClick={() => router.back()} />
       <div className={"flex-1 pl-6"}>
-        <p className={"text-xl font-semibold"}>{text}</p>
+        <p className={"text-xl font-semibold"}>{cookie?.memberNickName}</p>
       </div>
       <RxHamburgerMenu
         className={"font-semibold text-lg cursor-pointer"} 
