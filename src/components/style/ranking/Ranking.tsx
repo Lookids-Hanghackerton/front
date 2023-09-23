@@ -12,7 +12,7 @@ const Ranking = ({ feeds }: { feeds: RankingResponse }) => {
   return (
     <div>
       {rankingList.data.map(({ memberNickName, countFollower, memberProfileUrl, feedsList }, idx) => (
-        <div key={memberNickName} className={"border-b border-zinc-200 py-2"}>
+        <div key={memberNickName} className={"border-b border-zinc-200 pt-2 py-2 px-3 mb-4"}>
           <Owner
             idx={idx}
             memberNickName={memberNickName}
