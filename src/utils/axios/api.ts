@@ -1,4 +1,5 @@
 import { COOKIE_NAME, getCookie, setCookie } from "@/lib/cookie/cookie";
+import { UserAtom } from "@/states/atom/user.atom";
 import axios, { CreateAxiosDefaults } from "axios";
 
 const config: CreateAxiosDefaults = {
@@ -11,7 +12,7 @@ api.interceptors.request.use(config => {
   const token = getCookie(COOKIE_NAME);
 
   if (token !== undefined && token !== null) {
-    config.headers.Authorization = token.accessKey;
+    config.headers["AccessKey"] = token.accessKey;
   }
   return config;
 });
@@ -21,23 +22,32 @@ api.interceptors.response.use(
   async error => {
     const originalRequest = error.config;
 
-    // status code 401
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    // status code 403
+    if (error.response?.status === 403 && !originalRequest._retry) {
+      console.log("액세스 토큰 만료");
       originalRequest._retry = true;
 
       try {
-        console.log("리프레시 만료");
-        // const refreshKey = getCookie("refreshKey");
-        // const response = await axios.post("/api/refresh-token", { refreshKey });
-        // const { token } = response.data;
+        const userData = getCookie(COOKIE_NAME);
 
-        // setCookie("accessKey", token);
+        const response = await api.get("/reissue", {
+          headers: {
+            RefreshKey: userData?.refreshKey,
+          },
+        });
+        const accessKey = response.data.data.accessKey;
 
-        // originalRequest.headers.Authorization = token;
+        const prev = getCookie(COOKIE_NAME);
+        const next = { ...prev, accessKey } as UserAtom;
+
+        setCookie(COOKIE_NAME, next);
+
+        originalRequest.headers["AccessKey"] = accessKey;
+        originalRequest._retry = false;
+
         return axios(originalRequest);
       } catch (error) {
         console.log(error);
-        // Handle refresh token error or redirect to login
       }
     }
 
