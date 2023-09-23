@@ -40,7 +40,7 @@ const NAV_ITEMS: NavItemProps[] = [
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <nav className={"max-w-[768px] w-full bg-n-100 border-t-gray-200"}>
+    <nav className={"max-w-[768px] w-full bg-zinc-50 border-t-gray-200"}>
       <ul className={"w-full flex justify-between px-3"}>
         {NAV_ITEMS.map(({ icon, text, href }) => (
           <NavItem key={href} icon={icon} text={text} href={href} pathname={pathname} />
