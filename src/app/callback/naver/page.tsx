@@ -1,7 +1,6 @@
 "use client";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-
 import LinkToLogin from "../common/LinkToLogin";
 import UseAuth from "@/hooks/useAuth";
 

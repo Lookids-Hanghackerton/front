@@ -9,7 +9,6 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <ArrowHeader center={<Center isText={false} placeHolder={"검색"} />} />
       <>{children}</>
     </>
   );
