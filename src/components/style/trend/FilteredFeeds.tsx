@@ -1,8 +1,8 @@
 "use client";
 
 import Filters from "@components/style/trend/Filters";
-import { useState } from "react";
-import { useGetTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
+import { useEffect, useRef, useState } from "react";
+import { useInfiniteFeeds } from "@/apis/controllers/useGetTrendFeeds";
 import { FeedResponse } from "@/apis/interfaces/Feeds";
 import Feeds from "@components/style/trend/Feeds";
 
@@ -15,12 +15,27 @@ const FilteredFeeds = ({ feedList }: { feedList: FeedResponse }) => {
     setFiltered(target);
   };
 
-  const data = useGetTrendFeeds({ filtered, feedList });
+  // const data = useGetTrendFeeds({ filtered, feedList });
+  const observerRef = useRef<HTMLSpanElement>(null);
+  const { data: data, fetchNextPage, isFetchingNextPage } = useInfiniteFeeds({ filtered, feedList });
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => fetchNextPage());
+    });
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+  }, [observerRef]);
 
   return (
     <div>
       <Filters filtered={filtered} onClick={filterHandler} />
-      <Feeds feeds={data.data.feedsList} />
+      {data?.pages.map((page, idx) => (
+        <div key={idx}>
+          <Feeds feeds={page.data.feedsList} />
+        </div>
+      ))}
+      <span ref={observerRef}></span>
     </div>
   );
 };
