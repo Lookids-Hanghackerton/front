@@ -2,7 +2,7 @@
 
 import Filters from "@components/style/trend/Filters";
 import { useEffect, useRef, useState } from "react";
-import { useInfiniteFeeds } from "@/apis/controllers/useGetTrendFeeds";
+import { useInfiniteFeeds } from "@/apis/controllers/style/useGetTrendFeeds";
 import { FeedResponse } from "@/apis/interfaces/Feeds";
 import Feeds from "@components/style/trend/Feeds";
 
