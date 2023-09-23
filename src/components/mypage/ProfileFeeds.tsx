@@ -16,7 +16,7 @@ const ProfileFeeds = ({ feedList }: { feedList: FeedResponse }) => {
     setFiltered(target);
   };
 
-  const data = useGetMyFeeds({ filtered, feedList, memberUniqueId });
+  const data = useGetMyFeeds({ filtered, feedList });
 
   return (
     <div>

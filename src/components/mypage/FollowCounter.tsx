@@ -5,16 +5,16 @@ import { api } from "@/utils/axios/api";
 import { getCookie, COOKIE_NAME } from "@/lib/cookie/cookie";
 import Link from "next/link";
 
-// const getMyfeeds = async (memberUniqueId: string) => {
-//   const { data } = await api.get("mypage/236bcfe1-73f1-47ee-ab4c-86916778af22?sort=latest");
-//   return data;
-// }
+const getMyfeeds = async () => {
+  const { data } = await api.get(`mypage/${cookie?.memberUniqueId}?sort=latest`);
+  return data;
+}
 
-const FollowCounter = ({memberUniqueId}: Info) => {
-  const cookie = getCookie(COOKIE_NAME);
+const cookie = getCookie(COOKIE_NAME);
+const FollowCounter = () => {
   console.log(cookie);
-  // const {data} = useQuery(["memberUniqueId"], () => getMyfeeds(memberUniqueId));
-  // console.log(data);  
+  const {data} = useQuery(["data"], () => getMyfeeds());
+  console.log(data);  
   return (
     <>
       <ul className="flex justify-around items-center flex-1">
