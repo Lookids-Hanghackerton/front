@@ -3,20 +3,18 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 import LinkToLogin from "../common/LinkToLogin";
-import UseLogin from "@/hooks/useSocialLogin";
+import UseAuth from "@/hooks/useAuth";
 
 const Page = () => {
   const searchParams = useSearchParams();
-  const useLogin = UseLogin();
+  const useAuth = UseAuth();
 
   useEffect(() => {
     const code = searchParams.get("code");
-    const state = searchParams.get("state");
-    if (!code || !state) return console.log("uri에 code 또는 state가 없습니다.");
+    if (!code) return console.log("uri에 code가 없습니다.");
 
-    const params = `code=${code}&state=${state}`;
-
-    useLogin.login({ type: "naver", search: params, code });
+    const params = `code=${code}`;
+    useAuth.login({ type: "naver", search: params, code });
   }, []);
 
   return (

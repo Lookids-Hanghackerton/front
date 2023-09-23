@@ -3,18 +3,18 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 import LinkToLogin from "../common/LinkToLogin";
-import UseLogin from "@/hooks/useSocialLogin";
+import UseAuth from "@/hooks/useAuth";
 
 const Page = () => {
   const searchParams = useSearchParams();
-  const useLogin = UseLogin();
+  const useAuth = UseAuth();
 
   useEffect(() => {
     const code = searchParams.get("code");
-    if (!code) return console.log("code가 없습니다.");
+    if (!code) return console.log("uri에 code가 없습니다.");
 
     const params = `code=${code}`;
-    useLogin.login({ type: "kakao", search: params, code });
+    useAuth.login({ type: "kakao", search: params, code });
   }, []);
 
   return (

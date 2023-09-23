@@ -1,3 +1,4 @@
+import { COOKIE_NAME, getCookie, setCookie } from "@/lib/cookie/cookie";
 import axios, { CreateAxiosDefaults } from "axios";
 
 const config: CreateAxiosDefaults = {
@@ -7,9 +8,10 @@ const config: CreateAxiosDefaults = {
 export const api = axios.create(config);
 
 api.interceptors.request.use(config => {
-  const token = localStorage.getItem("accessKey");
-  if (token) {
-    config.headers.Authorization = token;
+  const token = getCookie(COOKIE_NAME);
+
+  if (token !== undefined && token !== null) {
+    config.headers.Authorization = token.accessKey;
   }
   return config;
 });
@@ -24,13 +26,14 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const refreshKey = localStorage.getItem("refreshKey");
-        const response = await axios.post("/api/refresh-token", { refreshKey });
-        const { token } = response.data;
+        console.log("리프레시 만료");
+        // const refreshKey = getCookie("refreshKey");
+        // const response = await axios.post("/api/refresh-token", { refreshKey });
+        // const { token } = response.data;
 
-        localStorage.setItem("accessKey", token);
+        // setCookie("accessKey", token);
 
-        originalRequest.headers.Authorization = token;
+        // originalRequest.headers.Authorization = token;
         return axios(originalRequest);
       } catch (error) {
         console.log(error);

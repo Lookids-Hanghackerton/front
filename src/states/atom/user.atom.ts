@@ -1,10 +1,12 @@
 import { atom } from "recoil";
 
-type UserAtom = {
+export type UserAtom = {
   memberId: number | null;
   memberUniqueId: string;
   memberNickName: string;
   profileImage: string;
+  accessKey: string;
+  refreshKey: string;
 } | null;
 
 export const userAtom = atom<UserAtom>({
