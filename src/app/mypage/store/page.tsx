@@ -12,22 +12,14 @@ const Page = async () => {
   const feedList = await getTrendFeeds("인기순");
   return (
     <>
-      <ProfileHeader text={"UserName"}/>
+      <ProfileHeader text={"UserName"} />
       <ProfileTabs />
       <div className="flex h-100 w-full px-10 py-5">
-        <Image
-          className="rounded-full" 
-          width={100}
-          height={100}
-          src={DefaultImage} 
-          alt="프로필 기본 이미지"
-        />
+        <Image className="rounded-full" width={100} height={100} src={DefaultImage} alt="프로필 기본 이미지" />
         <FollowCounter />
       </div>
       <div>
-        <div className="py-5 px-10">
-          소개글을 작성해주세요
-        </div>
+        <div className="py-5 px-10">소개글을 작성해주세요</div>
       </div>
       <ProfileButton />
       <FeedsTabs />
