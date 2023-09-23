@@ -1,21 +1,19 @@
 "use client";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { postSocialCode } from "@/apis/controllers/useSocialLogin";
-
 import LinkToLogin from "../common/LinkToLogin";
+import UseAuth from "@/hooks/useAuth";
 
 const Page = () => {
   const searchParams = useSearchParams();
+  const useAuth = UseAuth();
 
   useEffect(() => {
     const code = searchParams.get("code");
-    const state = searchParams.get("state");
-    if (!code || !state) return console.log("uri에 code 또는 state가 없습니다.");
+    if (!code) return console.log("uri에 code가 없습니다.");
 
-    const params = `code=${code}&state=${state}`;
-
-    postSocialCode({ type: "naver", search: params, code, state });
+    const params = `code=${code}`;
+    useAuth.login({ type: "naver", search: params, code });
   }, []);
 
   return (

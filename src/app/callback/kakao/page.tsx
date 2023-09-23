@@ -1,20 +1,19 @@
 "use client";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { postSocialCode } from "@/apis/controllers/useSocialLogin";
-
 import LinkToLogin from "../common/LinkToLogin";
+import UseAuth from "@/hooks/useAuth";
 
 const Page = () => {
   const searchParams = useSearchParams();
+  const useAuth = UseAuth();
 
   useEffect(() => {
     const code = searchParams.get("code");
-    if (!code) return console.log("code가 없습니다.");
+    if (!code) return console.log("uri에 code가 없습니다.");
 
     const params = `code=${code}`;
-
-    postSocialCode({ type: "kakao", search: params, code });
+    useAuth.login({ type: "kakao", search: params, code });
   }, []);
 
   return (
