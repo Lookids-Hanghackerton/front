@@ -7,7 +7,7 @@ import Measure from "react-measure";
 
 const Feeds = ({ feeds }: { feeds: FeedData[] }) => {
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={{ 200: 2, 600: 3 }} className={"px-5"} key={feeds.length}>
+    <ResponsiveMasonry columnsCountBreakPoints={{ 200: 2, 600: 3 }} className={"px-6"} key={feeds.length}>
       <Masonry gutter={"10px"}>
         {feeds.map(({ feedsId, content, likeCount, replyCount, pictures, hashTag, member }) => (
           <Measure key={feedsId}>
@@ -36,7 +36,7 @@ export default Feeds;
 export const FeedDetail = ({ feedsId, content, likeCount, pictures, member }: FeedData) => {
   return (
     <Link href={`/feed/${feedsId}`} className={"w-full cursor-pointer"}>
-      <div className={"relative"}>
+      <div className={"relative px-1"}>
         <Image
           width={120}
           height={120}
@@ -52,7 +52,8 @@ export const FeedDetail = ({ feedsId, content, likeCount, pictures, member }: Fe
           </div>
         )}
       </div>
-      <div className={"py-2"}>
+
+      <div className={"pt-3 py-2 px-[0.5rem]"}>
         <div className={"flex items-center justify-between"}>
           <div className={"flex items-center"}>
             <div className={"relative w-6 h-6 mr-2"}>
@@ -65,7 +66,7 @@ export const FeedDetail = ({ feedsId, content, likeCount, pictures, member }: Fe
             <span className={"text-gray-500 text-sm"}>{likeCount}</span>
           </div>
         </div>
-        <p className={"text-sm py-2"}>{content}</p>
+        <p className={"text-sm py-2 mb-6"}>{content}</p>
       </div>
     </Link>
   );

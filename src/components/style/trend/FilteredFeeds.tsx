@@ -30,6 +30,7 @@ const FilteredFeeds = ({ feedList }: { feedList: FeedResponse }) => {
   return (
     <div>
       <Filters filtered={filtered} onClick={filterHandler} />
+
       {data?.pages.map((page, idx) => (
         <div key={idx}>
           <Feeds feeds={page.data.feedsList} />

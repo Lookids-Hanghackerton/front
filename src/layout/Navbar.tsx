@@ -55,7 +55,7 @@ export default Navbar;
 const NavItem = ({ icon, text, href, pathname }: { pathname: string } & NavItemProps) => {
   return (
     <li className={"flex flex-1 items-center justify-center"}>
-      <Link className={"flex flex-col w-full items-center gap-1 py-2.5 px-4 "} href={href}>
+      <Link className={"flex flex-col w-full items-center gap-1 pb-6 py-4 px-4 "} href={href}>
         {icon}
         <span className={"text-sm truncate " + (pathname === href ? "text-black font-bold" : "text-gray-600")}>
           {text}

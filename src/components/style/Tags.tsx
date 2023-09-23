@@ -12,7 +12,7 @@ const Tags = ({ tagList }: { tagList: any }) => {
   const tags = data.data;
   return (
     <div
-      className={"w-full pt-4 pb-2 overflow-auto no-scroll"}
+      className={"w-full pt-8 pb-2 px-6 overflow-auto no-scroll"}
       ref={scrollRef}
       onMouseDown={onDragStart}
       onMouseMove={onDragMove}
