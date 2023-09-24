@@ -1,7 +1,7 @@
 ---
-name: 'feat: 기능 관련 이슈'
-about: 새로운 기능 추가 및 기능 개선
-title: 'feat: '
+name: "\U0001F90D Feat : 기능 관련 이슈"
+about: "\U0001F90D 새로운 기능 추가 및 기능 개선"
+title: "\U0001F90D Feat : "
 labels: ''
 assignees: ''
 

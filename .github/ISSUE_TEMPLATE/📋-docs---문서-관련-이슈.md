@@ -1,8 +1,8 @@
 ---
-name: 'docs: 문서 관련 이슈'
+name: "\U0001F4CB Docs : 문서 관련 이슈"
 about: 프로젝트 문서 작성
-title: 'docs: '
-labels: ''
+title: "\U0001F4CB Docs : "
+labels: "\U0001F4D6 documentation"
 assignees: ''
 
 ---
