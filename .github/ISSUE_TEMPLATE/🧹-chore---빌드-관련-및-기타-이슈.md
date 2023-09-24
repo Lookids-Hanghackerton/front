@@ -1,6 +1,6 @@
 ---
 name: "\U0001F9F9 Chore : 빌드 관련 및 기타 이슈"
-about: "\U0001F9F9 의존성, 환경 변수, 빌드 관련 코드 업데이트"
+about: 의존성, 환경 변수, 빌드 관련 코드 업데이트
 title: "\U0001F9F9 Chore : "
 labels: "\U0001F9F9 chorement"
 assignees: ''

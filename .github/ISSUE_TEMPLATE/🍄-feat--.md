@@ -1,6 +1,6 @@
 ---
 name: "\U0001F344 Feat :"
-about: "\U0001F344 추가 기능"
+about: 추가 기능
 title: "\U0001F344 Feat : "
 labels: "\U0001F344 improvement"
 assignees: ''

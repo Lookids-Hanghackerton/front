@@ -1,6 +1,6 @@
 ---
 name: "❗️ Fix : 버그 관련 이슈"
-about: "❗️ 버그 발견 및 수정 bugfix"
+about: 버그 발견 및 수정 bugfix
 title: "❗️ Fix : "
 labels: "❕bug"
 assignees: ''
