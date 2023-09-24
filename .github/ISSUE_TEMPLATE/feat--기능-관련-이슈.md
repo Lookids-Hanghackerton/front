@@ -2,7 +2,7 @@
 name: 'feat: 기능 관련 이슈'
 about: 새로운 기능 추가 및 기능 개선
 title: 'feat: '
-labels: feature
+labels: ''
 assignees: ''
 
 ---

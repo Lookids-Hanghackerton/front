@@ -2,7 +2,7 @@
 name: 'docs: 문서 관련 이슈'
 about: 프로젝트 문서 작성
 title: 'docs: '
-labels: documentation
+labels: ''
 assignees: ''
 
 ---
