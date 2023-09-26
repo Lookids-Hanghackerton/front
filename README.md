@@ -33,7 +33,7 @@
 | 최락현 | FE | 든든 팀장 🤠 | https://github.com/chasura416 |
 | 두선아 | FE | 정리 빌런 😈 | https://github.com/dusunax |
 | 김현지 | FE | 작은 멤버 🧚‍♀️ |  |
-| 윤창순 | FE | CSS 퀸 🧝‍♀️ |  |
+| 윤창순 | FE | CSS 퀸 🧝‍♀️ | https://github.com/Changsoon-Yun |
 
 ## 배포
 
