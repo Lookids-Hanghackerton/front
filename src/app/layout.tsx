@@ -11,6 +11,9 @@ import Navbar from "@/layout/Navbar";
 export const metadata: Metadata = {
   title: "ㅋㅋㅈ Kikids",
   description: "아동 패션 소셜 네트워크 서비스",
+  openGraph: {
+    title: "ㅋㅋㅈ Kikids",
+  },
 };
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
