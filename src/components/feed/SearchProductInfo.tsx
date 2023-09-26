@@ -36,8 +36,9 @@ const SearchProductInfo = () => {
   // }
   const HandleClickProductInfo = (item: { productsId?: number; manufacturesName: string; productsName: string }) => {
     setIsOpenModal(!isOpenModal);
-    setInput("");
     setProductTag(`${item.productsName} / ${item.manufacturesName}`);
+    setSearchProduct("");
+    setProductInfo([]);
   };
 
   return (
