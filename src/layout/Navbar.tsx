@@ -7,6 +7,7 @@ import { CgProfile } from "react-icons/cg";
 import { usePathname } from "next/navigation";
 import { LuSearch } from "react-icons/lu";
 import { AiOutlineMessage } from "react-icons/ai";
+import { BiLogIn, BiSolidLogIn } from "react-icons/bi";
 
 interface NavItemProps {
   icon: ReactNode;
@@ -34,6 +35,11 @@ const NAV_ITEMS: NavItemProps[] = [
     icon: <CgProfile size={"28px"} />,
     text: "마이페이지",
     href: "/mypage",
+  },
+  {
+    icon: <BiLogIn size={"28px"} />,
+    text: "임시 로그인 버튼",
+    href: "/login",
   },
 ];
 
