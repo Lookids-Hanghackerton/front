@@ -7,7 +7,6 @@ const Page = async () => {
   const cookieStore = cookies();
   const cookie = cookieStore.getAll().map(cookie => JSON.parse(cookie.value))[0] as Cookie;
 
-  console.log(cookie);
   const feedList = await getTrendFeeds("인기순", 0);
 
   return (
