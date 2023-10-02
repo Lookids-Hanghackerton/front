@@ -34,7 +34,7 @@ const Tag = ({ tag, images }: { tag: string; images: string }) => {
   return (
     <li className={"flex-1 flex flex-col justify-start items-center gap-2.5 cursor-pointer"}>
       <div className={"relative w-16 h-16 rounded-full bg-black overflow-hidden"}>
-        <Image fill={true} src={images} alt={"image"} />
+        <Image fill={true} src={images} sizes="30px" alt={"image"} />
       </div>
       <div className={"w-16 text-center break-all text-gray-700 text-sm"}>#{tag}</div>
     </li>
