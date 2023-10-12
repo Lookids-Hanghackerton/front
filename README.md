@@ -39,9 +39,11 @@
 ```
 💝 ! Kikids는 배포 준비중입니다 !
 
+
 📌 Todo : 배포 후 다이어그램 작성하기
 ```
 
+- Vercel Preview : [kikids-magic.vercel.app](https://kikids-magic.vercel.app/)
 - 기능 개선 및 배포 준비 사항  
   ![image](https://github.com/Lookids-Hanghackerton/.github/assets/94776135/36e4d448-4eb2-4e96-9b70-ae6e3528a3b3)
   - 노션 스크린샷 & 현재 기능 정리 [완성/미완성 기능 정리\_230925](https://www.notion.so/_230925-76c714d0fc6845fdb7bb5b9cbd92db23?pvs=21)
