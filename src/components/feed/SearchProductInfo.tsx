@@ -12,19 +12,9 @@ const SearchProductInfo = () => {
     { productsId: number; manufacturesName: string; productsName: string }[]
   >([]);
   const [productTag, setProductTag] = useState("# 상품 태그를 추가해 보세요 ");
+  const [input, setInput] = useState("");
   const selectedResult = useRecoilValue(selectedResultState);
-
   const openProductTagModal = () => setIsOpenModal(!isOpenModal);
-
-  // const handleClickProduct = () => {
-  //   setIsOpenModal(!isOpenModal);
-  //   setSearchProduct("");
-  // };
-
-  // const { data: results } = useQuery(["search", productTag], async () => {
-  //   const response = await axios.get(`http://49.50.161.207:8080/product/find/${productTag}`);
-  //   return response.data;
-  // });
 
   const handleProductChange = async (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
@@ -44,9 +34,11 @@ const SearchProductInfo = () => {
   // const handleAddProductTag = () => {
   //   onChange={handleAddProductTag}
   // }
-  const clickProductInfo = () => {
+  const HandleClickProductInfo = (item: { productsId?: number; manufacturesName: string; productsName: string }) => {
     setIsOpenModal(!isOpenModal);
-    // setProductTag(results);
+    setProductTag(`${item.productsName} / ${item.manufacturesName}`);
+    setSearchProduct("");
+    setProductInfo([]);
   };
 
   return (
@@ -75,7 +67,7 @@ const SearchProductInfo = () => {
                       return (
                         <li
                           className="cursor-pointer hover:bg-sky-500"
-                          onClick={clickProductInfo}
+                          onClick={() => HandleClickProductInfo(item)}
                           key={item.productsId}
                         >
                           상품명/회사 : {item.productsName} / {item.manufacturesName}
