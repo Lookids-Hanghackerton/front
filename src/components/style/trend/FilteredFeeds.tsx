@@ -15,7 +15,6 @@ const FilteredFeeds = ({ feedList }: { feedList: FeedResponse }) => {
     setFiltered(target);
   };
 
-  // const data = useGetTrendFeeds({ filtered, feedList });
   const observerRef = useRef<HTMLSpanElement>(null);
   const { data: data, fetchNextPage, isFetchingNextPage } = useInfiniteFeeds({ filtered, feedList });
   useEffect(() => {

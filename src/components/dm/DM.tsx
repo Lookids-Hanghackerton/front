@@ -3,8 +3,8 @@
 import { Button, Card, Input, InputGroup, InputRightAddon, Text } from "@chakra-ui/react";
 import { BiMicrophone } from "react-icons/bi";
 import Image from "next/image";
-import { useGetTrendFeeds } from "@/apis/controllers/useGetTrendFeeds";
 import { FeedResponse } from "@/apis/interfaces/Feeds";
+import { useGetTrendFeeds } from "@/apis/controllers/style/useGetTrendFeeds";
 
 const DM = ({
   profileImage,
